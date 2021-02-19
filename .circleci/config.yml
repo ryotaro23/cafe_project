@@ -58,8 +58,11 @@ jobs:
       - run:
           name: RSpec
           command: |
-            bundle exec rspec $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings) \
-              || (printf "====== RETRYING...\n\n\n"; bundle exec rspec --only-failures)
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
           working_directory: ~/repo
 
       # collect reports
