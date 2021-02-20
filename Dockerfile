@@ -27,5 +27,7 @@ COPY . /app
 # 以下の記述を追加
 ENV RAILS_ENV=production
 
+RUN bundle exec rake assets:precompile RAILS_ENV=production
+
 # この記述を追加
 CMD bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
