@@ -1,5 +1,7 @@
 FROM ruby:2.6.5
 
+ENV RAILS_MASTER_KEY master
+
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && \
     apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
