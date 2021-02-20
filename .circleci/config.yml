@@ -95,22 +95,22 @@ jobs:
       - run:
           name: heroku maintenance on
           command: heroku maintenance:on --app ${HEROKU_APP_NAME}
-      # - run:
-      #     name: Deploy to Heroku_Production
-      #     command: |
-      #       git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+      - run:
+          name: Deploy to Heroku_Production
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
       - run:
           name: export rails master key
           command: |
             export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-      - run:
-          name: push
-          command: |
-            heroku container:push web --app ${HEROKU_APP_NAME}
-      - run:
-          name: release
-          command: |
-            heroku container:release web --app ${HEROKU_APP_NAME}
+      # - run:
+      #     name: push
+      #     command: |
+      #       heroku container:push web --app ${HEROKU_APP_NAME}
+      # - run:
+      #     name: release
+      #     command: |
+      #       heroku container:release web --app ${HEROKU_APP_NAME}
       - run:
           name: db migration
           command: |
