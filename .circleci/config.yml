@@ -100,6 +100,10 @@ jobs:
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
       - run:
+          name: export rails master key
+          command: |
+            export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+      - run:
           name: db migration
           command: heroku run rails db:migrate --app ${HEROKU_APP_NAME}
       - run:
