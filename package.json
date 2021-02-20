@@ -1,6 +1,9 @@
 {
   "name": "app",
   "private": true,
+  "scripts": {
+  "build:production": "NODE_ENV=production npm rebuild node-sass; webpack --config webpack.config.js"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",

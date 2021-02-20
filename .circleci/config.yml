@@ -122,7 +122,7 @@ jobs:
       - run:
           name: precompile
           command: |
-            heroku run rails assets:precompile --app ${HEROKU_APP_NAME}
+            heroku run rake assets:precompile RAILS_ENV=production --app ${HEROKU_APP_NAME}
       - run:
           name: heroku maintenance off
           command: heroku maintenance:off --app ${HEROKU_APP_NAME}

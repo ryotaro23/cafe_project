@@ -13,6 +13,6 @@ heroku addons:create heroku-postgresql:hobby-dev
 heroku run rails db:migrate
 
 # precompile
-heroku run rails assets:precompile
+heroku run rake assets:precompile RAILS_ENV=production
 
 heroku open
