@@ -79,6 +79,8 @@ jobs:
   deploy:
     docker:
       - image: circleci/ruby:2.6.5-stretch-node
+        environment:
+          RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     working_directory: ~/repo
     steps:
       - checkout
