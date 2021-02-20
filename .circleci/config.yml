@@ -105,7 +105,7 @@ jobs:
             export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
       - run:
           name: db migration
-          command: export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+          command: export RAILS_MASTER_KEY=${RAILS_MASTER_KEY} \
                     heroku run rails db:migrate --app ${HEROKU_APP_NAME}
       - run:
           name: heroku maintenance off
