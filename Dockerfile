@@ -1,6 +1,5 @@
 FROM ruby:2.6.5
 
-ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && \
     apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
@@ -28,8 +27,6 @@ COPY . /app
 
 # 以下の記述を追加
 ENV RAILS_ENV=production
-
-RUN bundle exec rake assets:precompile RAILS_ENV=production
 
 # この記述を追加
 CMD bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
