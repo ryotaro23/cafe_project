@@ -1,0 +1,50 @@
+$primary-color: #eb6877;
+$secondary-color: #6dd0b0;
+$tertiary-color: #c85965;
+$link-color: rgba(69, 69, 69, 0.5);
+$text-info: #959595;
+$text-dark: #434343;
+$text-light: #88b3d3;
+$background-primary: #eb6877;
+$background-danger: #ff9e82;
+$background-color-grey: #f2f2f2;
+$background-color-white: #fff;
+
+$color-text: #707070;
+$color-freelance: #33568c;
+$color-career: #6dd0b0;
+
+$border-color: #bfbfbf;
+$button-color: #f2f2f2;
+
+$font-size-body: 1.4rem;
+$font-size-secondary: 1.3rem;
+$font-family-base: "Hiragino Kaku Gothic ProN", "メイリオ", helvetica,
+    sans-serif;
+$font-family-raleway: Raleway, $font-family-base;
+$font-family-medel: Medel, $font-family-base;
+
+$size-s: 600px;
+$size-m: 992px;
+$size-l: 1200px;
+$size-xl: 1366px;
+$size-xxl: 1440px;
+$size-lg-more: 1280px;
+
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$hd: 1366px;
+$xxl: 1440px;
+$xxxl: 1600px;
+
+//FONTAWESOME CUSTOMIZE
+$fa-font-path: "../../node_modules/@fortawesome/fontawesome-free/webfonts";
+
+//BOOSTRAP CUSTOMIZE
+$nav-tabs-border-color: $border-color;
+$nav-tabs-link-hover-border-color: #e9ecef #e9ecef $border-color;
+$nav-tabs-link-active-border-color: $border-color $border-color #fff;
+$color-red: red;
