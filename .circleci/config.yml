@@ -103,26 +103,14 @@ jobs:
           name: export rails master key
           command: |
             export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-      # - run:
-      #     name: push
-      #     command: |
-      #       heroku container:push web --app ${HEROKU_APP_NAME}
-      # - run:
-      #     name: release
-      #     command: |
-      #       heroku container:release web --app ${HEROKU_APP_NAME}
       - run:
           name: db migration
           command: |
             heroku run rails db:migrate --app ${HEROKU_APP_NAME}
-      - run:
-          name: update node-sass
-          command: |
-            npm rebuild node-sass
-      - run:
-          name: precompile
-          command: |
-            heroku run rake assets:precompile RAILS_ENV=production --app ${HEROKU_APP_NAME}
+      # - run:
+      #     name: precompile
+      #     command: |
+      #       heroku run rake assets:precompile RAILS_ENV=production --app ${HEROKU_APP_NAME}
       - run:
           name: heroku maintenance off
           command: heroku maintenance:off --app ${HEROKU_APP_NAME}
