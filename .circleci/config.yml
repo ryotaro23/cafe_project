@@ -1,5 +1,7 @@
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@1.2.5
 
 jobs:
   test_backend:
@@ -75,45 +77,25 @@ jobs:
       - store_artifacts:
           path: /home/circleci/repo/tmp/screenshots
 
-
   deploy:
-    docker:
-      - image: circleci/ruby:2.6.5-stretch-node
-        environment:
-          RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-    working_directory: ~/repo
+    executor: heroku/default
     steps:
       - checkout
+      - heroku/install
       - run:
-          name: 'Install Heroku CLI, if necessary'
+          name: Storing previous commit
           command: |
-            if [[ $(command -v heroku) == "" ]]; then
-              curl https://cli-assets.heroku.com/install.sh | sh
-            else
-              echo "Heroku is already installed. No operation was performed."
-            fi
+            git rev-parse HEAD > ./commit.txt
+      - heroku/install
+      - setup_remote_docker:
+          version: 18.06.0-ce
       - run:
-          name: heroku maintenance on
-          command: heroku maintenance:on --app ${HEROKU_APP_NAME}
-      - run:
-          name: Deploy to Heroku_Production
+          name: Pushing to heroku registry
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-      - run:
-          name: export rails master key
-          command: |
-            export RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-      - run:
-          name: db migration
-          command: |
-            heroku run rails db:migrate --app ${HEROKU_APP_NAME}
-      # - run:
-      #     name: precompile
-      #     command: |
-      #       heroku run rake assets:precompile RAILS_ENV=production --app ${HEROKU_APP_NAME}
-      - run:
-          name: heroku maintenance off
-          command: heroku maintenance:off --app ${HEROKU_APP_NAME}
+            heroku container:login
+            heroku container:push web --arg RAILS_ENV=production -a $HEROKU_APP_NAME
+            heroku container:release web -a $HEROKU_APP_NAME
+
 
 workflows:
   version: 2
