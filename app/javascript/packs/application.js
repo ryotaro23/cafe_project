@@ -12,6 +12,12 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+// Bootstrapのスタイルシート側の機能を読み込む
+// webpack.config.jsでcssを読み取れるようにへんこうを加える
+import "bootstrap/dist/css/bootstrap.min.css";
+// BootstrapのJavaScript側の機能を読み込む
+import "bootstrap";
+
 import '../js/application'
 import '../scss/application'
 const images = require.context('../images', true)

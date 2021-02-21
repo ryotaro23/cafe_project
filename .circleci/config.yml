@@ -93,7 +93,7 @@ jobs:
           name: Pushing to heroku registry
           command: |
             heroku container:login
-            heroku container:push web --arg RAILS_ENV=production -a $HEROKU_APP_NAME
+            heroku container:push web -a $HEROKU_APP_NAME
             heroku container:release web -a $HEROKU_APP_NAME
 
 
