@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<% if @event.image.attached? %>
+  <p>
+    <strong>Name:</strong>
+    <%= image_tag @event.image %>
+  </p>
+<% end %>
+
+
+<p>
+  <strong>Time:</strong>
+  <%= @event.time_id %>
+</p>
+
+<p>
+  <strong>Recommend menu:</strong>
+  <%= @event.recommend_menu %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @event.place %>
+</p>
+
+<p>
+  <strong>Max num:</strong>
+  <%= @event.max_num %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
