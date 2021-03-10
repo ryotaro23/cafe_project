@@ -1,18 +1,30 @@
 ActiveAdmin.register Event do
+  permit_params :name, :style, :abv, :ibu, :description, :image
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :name, :time_id, :recommend_menu, :place, :max_num
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:name, :time_id, :recommend_menu, :place, :max_num]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  form do |f|
+    f.semantic_errors # shows errors on :base
+    f.inputs do
+      f.input :name
+      f.input :time_id
+      f.input :recommend_menu
+      f.input :place
+      f.input :max_num
+      f.input :image, as: :file
+      f.actions
+    end
+  end
 
+  show do
+    attributes_table do
+      row :name
+      row :time_id
+      row :recommend_menu
+      row :place
+      row :max_num
+      row :image do |ad|
+        image_tag url_for(ad.image)
+      end
+      active_admin_comments
+    end
+  end
 end
