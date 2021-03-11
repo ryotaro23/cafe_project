@@ -1,0 +1,18 @@
+
+<%= @user.id %>
+<%= @user.name %>
+
+<% if @user.user_image.attached? %>
+    <%= image_tag @user.user_image %>
+<% else %>
+    <%= image_tag("no-image-male.jpg") %>
+<% end %>
+
+<h3>参加予定の活動</h3>
+<% @events.each do |event| %>
+    <%= link_to event_path(event.event.id) do %>
+        <%= event.event.name %>
+    <% end %>
+<% end %>
+
+<%= link_to "編集", edit_user_path(@user.id) %>
