@@ -1,7 +1,7 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <!-- defaultのform_forからform_withへ変更 -->
-<%= form_with model: @user, url: user_registration_path, id: 'new_user' , class: 'new_user' , local: true do |f| %>
+<%= form_with model: @user, url: user_registration_path, id: 'edit_user' , class: 'edit_user' , local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">

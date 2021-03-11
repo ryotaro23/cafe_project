@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
     # ログインに成功しないとtopページ以外へのアクセスができないようにする
-    before_action :authenticate_user!,except: [:top]
+    # before_action :authenticate_user!,except: [:top]
 
     before_action :configure_permitted_parameters, if: :devise_controller?
 
