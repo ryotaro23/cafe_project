@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  resources :events do
+
+  resources :events, only: [:show, :index] do
+    # topページへのルーティングを追加
     collection do
       get 'top'
     end
   end
+  # get 'event/top', to: 'event#top'
 
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root  'events#index'  #この1行を追加
-  get 'event/top', to: 'event#top'
 
 
   get 'hello/index', to: 'hello#index'
