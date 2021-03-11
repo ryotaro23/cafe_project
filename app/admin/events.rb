@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  permit_params :name, :style, :abv, :ibu, :description, :image
+  permit_params :name, :time_id, :recommend_menu, :place, :max_num, :image
 
   form do |f|
     f.semantic_errors # shows errors on :base
