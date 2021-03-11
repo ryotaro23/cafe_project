@@ -15,7 +15,7 @@
 
 <p>
   <strong>Time:</strong>
-  <%= @event.time_id %>
+  <%= @event.time_table.time %>
 </p>
 
 <p>
@@ -33,5 +33,4 @@
   <%= @event.max_num %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

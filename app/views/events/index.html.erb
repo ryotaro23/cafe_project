@@ -18,13 +18,11 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
-        <td><%= event.time_id %></td>
+        <td><%= event.time_table.time %></td>
         <td><%= event.recommend_menu %></td>
         <td><%= event.place %></td>
         <td><%= event.max_num %></td>
         <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +30,3 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
