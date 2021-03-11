@@ -1,5 +1,8 @@
 class EventsController < InheritedResources::Base
 
+  def top
+    @events = Event.order(created_at: :desc).limit(5)
+  end
   private
 
     def event_params
