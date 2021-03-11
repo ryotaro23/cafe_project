@@ -33,4 +33,24 @@
   <%= @event.max_num %>
 </p>
 
+<% if current_user %>
+  <% if @event.join_by?(current_user) %>
+    <p>
+      <%= link_to event_event_joins_path(@event), method: :delete do %>
+        参加人数♥×<%= @event.event_joins.count %>/<%= @event.max_num %>
+      <% end %>
+    </p>
+    <% else %>
+      <p>
+        <%= link_to event_event_joins_path(@event), method: :post do %>
+          参加人数♡×<%= @event.event_joins.count %>/<%= @event.max_num %>
+        <% end %>
+      </p>
+  <% end %>
+<% else %>
+  <%= link_to event_event_joins_path(@event), method: :delete do %>
+    参加人数♥×<%= @event.event_joins.count %>/<%= @event.max_num %>
+  <% end %>
+<% end %>
+
 <%= link_to 'Back', events_path %>
