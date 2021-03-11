@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     collection do
       get 'top'
     end
+
+    # resourceと短径になっていることに注意
+    resource :event_joins, only: [:create, :destroy]
   end
   # get 'event/top', to: 'event#top'
 
