@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <li>
+      <%= link_to "創設者挨拶", greeting_events_path %>
+    </li>
     <% if user_signed_in? %>
       <li>
         <%= link_to "マイページへ", user_path(current_user.id) %>
@@ -26,6 +29,9 @@
           <%= link_to "ログイン" , new_user_session_path %>
         </li>
     <% end %>
+    <li>
+      <%= link_to "お問い合わせ" , "https://form.run/@cafe-moden" %>
+    </li>
     <%= yield %>
   </body>
 </html>
