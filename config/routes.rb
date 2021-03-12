@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'users/show'
   resources :events, only: [:show, :index] do
     # topページへのルーティングを追加
     collection do
