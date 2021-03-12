@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     # topページへのルーティングを追加
     collection do
       get 'top'
+      get "greeting"
     end
 
     # resourceと短径になっていることに注意
