@@ -27,6 +27,13 @@ gem 'rspec-rails'
 gem 'activeadmin'
 gem 'devise'
 
+# rails-i18n
+gem 'rails-i18n'
+
+# config
+gem 'config'
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
