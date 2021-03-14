@@ -18,6 +18,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // BootstrapのJavaScript側の機能を読み込む
 import "bootstrap";
 
-import '../js/application'
 import '../scss/application'
+import './header'
+import '../js/application'
 const images = require.context('../images', true)

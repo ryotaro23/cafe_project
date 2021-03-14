@@ -1,20 +1,4 @@
-// セクションごとのセッティング
-@mixin section-setting() {
-    width: 80%;
-    margin: 300px auto;
-}
-
-// タイトルの設定
-@mixin title-setting() {
-    text-align: center;
-    border-bottom: solid 1px;
-    margin: 60px auto;
-    width: 30%;
-
-    padding-bottom: 0.3em;
-}
-
-// アンダーラインが出るアクション
+// under-line
 @mixin under-line($color) {
     display: inline-block;
     position: relative;
@@ -39,7 +23,7 @@
     }
 }
 
-// アンダーラインが下から出るアクション
+// under-ling 2
 @mixin under-fade($border-color) {
     position: relative;
     display: inline-block;
@@ -65,55 +49,3 @@
     }
 }
 
-// ボタンが少し大きくなるアクション
-@mixin btn-action($color) {
-    color: $color;
-    transition: all 0.5s;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-    letter-spacing: 0.1em;
-
-    &:hover {
-        color: white;
-        /* border: 2px outset rgba(0, 0, 0, 0.9); */
-        font-weight: bold;
-        transform: scale(1.1);
-        transition: 0.2s;
-        text-shadow: 1px 1px 1px rgb(0, 0, 0);
-        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-        letter-spacing: 0.2em;
-    }
-}
-
-// progress-barの色ｋｌｐ
-@mixin bar-color() {
-    background: #282828;
-    background-image: -webkit-linear-gradient(right, #7b7f82 2%, #303136 100%),
-        -webkit-radial-gradient(50% 116%, rgba(255, 255, 255, 0) 0%, rgba(
-                        0,
-                        0,
-                        0,
-                        0.5
-                    )
-                    100%),
-        -webkit-linear-gradient(149deg, rgba(255, 255, 255, 0.5) 7%, rgba(
-                        87,
-                        87,
-                        87,
-                        0.5
-                    )
-                    68%, rgba(85, 85, 85, 0.5) 76%, rgba(0, 0, 0, 0.5) 100%);
-    background-image: linear-gradient(-90deg, #7b7f82 2%, #303136 100%),
-        radial-gradient(
-            50% 116%,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(0, 0, 0, 0.5) 100%
-        ),
-        linear-gradient(
-            -59deg,
-            rgba(255, 255, 255, 0.5) 7%,
-            rgba(87, 87, 87, 0.5) 68%,
-            rgba(85, 85, 85, 0.5) 76%,
-            rgba(0, 0, 0, 0.5) 100%
-        );
-    background-blend-mode: normal, multiply, multiply;
-}
