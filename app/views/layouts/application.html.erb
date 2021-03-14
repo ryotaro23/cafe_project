@@ -11,27 +11,51 @@
   </head>
 
   <body>
-    <li>
-      <%= link_to "創設者挨拶", greeting_events_path %>
-    </li>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "マイページへ", user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to "ログアウト" , destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-        <li>
-          <%= link_to "新規登録" , new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン" , new_user_session_path %>
-        </li>
-    <% end %>
-    <li>
-      <%= link_to "お問い合わせ" , Settings.web[:formrun] %>
-    </li>
+    <header class = "header content-center">
+      <div class="header__container">
+        <!-- logo -->
+        <%= link_to "/" , class: "header__logo content-center" do %>
+          <%= image_tag 'cafe-logo.png' , class: 'header__logo-img' %> Cafe Modern
+        <% end %>
+
+        <!-- hamburger menu -->
+        <button class="btn-menu" id="js-ham" type="button">
+          <i class="btn-menu__bars"></i>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="global-menu" id="js-modal">
+      <nav class="global-menu__nav">
+        <ul class="global-menu__list">
+          <li class="global-menu__item">
+            <%= link_to "創設者挨拶" , greeting_events_path %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="global-menu__item">
+              <%= link_to "マイページへ" , user_path(current_user.id) %>
+            </li>
+            <li class="global-menu__item">
+              <%= link_to "ログアウト" , destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="global-menu__item">
+              <%= link_to "新規登録" , new_user_registration_path %>
+            </li>
+            <li class="global-menu__item">
+              <%= link_to "ログイン" , new_user_session_path %>
+            </li>
+          <% end %>
+          <li class="global-menu__item">
+            <%= link_to "お問い合わせ" , Settings.web[:formrun] %>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <%= yield %>
   </body>
+
+  <script>
+  </script>
 </html>

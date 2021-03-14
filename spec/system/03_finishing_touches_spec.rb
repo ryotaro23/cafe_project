@@ -15,7 +15,7 @@
 #       fill_in 'user[email]', with: 'a' + user.email # 確実にuser, other_userと違う文字列にするため
 #       fill_in 'user[password]', with: 'password'
 #       fill_in 'user[password_confirmation]', with: 'password'
-#       click_button 'Sign up'
+#       click_button 'Sign up'log
 #       is_expected.to have_content 'successfully'
 #     end
 #     it 'ユーザログイン成功時' do
