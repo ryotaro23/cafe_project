@@ -24,45 +24,36 @@
           <span class="sr-only">Menu</span>
         </button>
       </div>
-
     </header>
-
-    <li>
-      <%= link_to "創設者挨拶", greeting_events_path %>
-    </li>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "マイページへ", user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to "ログアウト" , destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-        <li>
-          <%= link_to "新規登録" , new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン" , new_user_session_path %>
-        </li>
-    <% end %>
-    <li>
-      <%= link_to "お問い合わせ" , Settings.web[:formrun] %>
-    </li>
-    <%= yield %>
-
 
     <div class="global-menu" id="js-modal">
       <nav class="global-menu__nav">
-        <ul class = "global-menu__list">
-          <li class = "global-menu__item"><a href="#">Home</a></li>
-          <li class = "global-menu__item"><a href="#">About</a></li>
-          <li class = "global-menu__item"><a href="#">Work</a></li>
-          <li class = "global-menu__item"><a href="#">Contact</a></li>
+        <ul class="global-menu__list">
+          <li class="global-menu__item">
+            <%= link_to "創設者挨拶" , greeting_events_path %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="global-menu__item">
+              <%= link_to "マイページへ" , user_path(current_user.id) %>
+            </li>
+            <li class="global-menu__item">
+              <%= link_to "ログアウト" , destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="global-menu__item">
+              <%= link_to "新規登録" , new_user_registration_path %>
+            </li>
+            <li class="global-menu__item">
+              <%= link_to "ログイン" , new_user_session_path %>
+            </li>
+          <% end %>
+          <li class="global-menu__item">
+            <%= link_to "お問い合わせ" , Settings.web[:formrun] %>
+          </li>
         </ul>
       </nav>
     </div>
-
-
+    <%= yield %>
   </body>
 
   <script>
