@@ -11,6 +11,22 @@
   </head>
 
   <body>
+    <header class = "header content-center">
+      <div class="header__container">
+        <!-- logo -->
+        <%= link_to "/" , class: "header__logo content-center" do %>
+          <%= image_tag 'cafe-logo.png' , class: 'header__logo-img' %> Cafe Modern
+        <% end %>
+
+        <!-- hamburger menu -->
+        <button class="btn-menu" id="js-ham" type="button">
+          <i class="btn-menu__bars"></i>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
+
+    </header>
+
     <li>
       <%= link_to "創設者挨拶", greeting_events_path %>
     </li>
@@ -33,5 +49,22 @@
       <%= link_to "お問い合わせ" , Settings.web[:formrun] %>
     </li>
     <%= yield %>
+
+
+    <div class="global-menu" id="js-modal">
+      <nav class="global-menu__nav">
+        <ul class = "global-menu__list">
+          <li class = "global-menu__item"><a href="#">Home</a></li>
+          <li class = "global-menu__item"><a href="#">About</a></li>
+          <li class = "global-menu__item"><a href="#">Work</a></li>
+          <li class = "global-menu__item"><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+
   </body>
+
+  <script>
+  </script>
 </html>
