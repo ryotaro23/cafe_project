@@ -61,37 +61,6 @@ body {
     }
 }
 
-input,
-select {
-    border: solid 1px $border-color;
-    color: $text-info;
-    padding: 0.6rem 2rem;
-    height: 40px;
-}
-
-input:disabled {
-    opacity: 0.5;
-    pointer-events: none;
-    background: #f8f8f8;
-}
-
-select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-
-    &:-moz-focusring {
-        color: transparent;
-        text-shadow: 0 0 0 $color-text;
-    }
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-    height: auto;
-}
-
-
-
 h1,
 h2,
 h3,

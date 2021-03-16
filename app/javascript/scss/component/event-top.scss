@@ -33,7 +33,7 @@
         }
     }
 
-    &__btn.registration {
+    &__btn.registration-btn {
         margin: 30px 0;
         color: white;
         &::before,
@@ -42,7 +42,7 @@
         }
     }
 
-    &__btn.login {
+    &__btn.login-btn {
         color: white;
         &::before,
         &::after {
