@@ -10,12 +10,12 @@
         </h1>
         <div class="event-top__btn__wrapper">
             <% if not current_user %>
-                <%= link_to new_user_registration_path,class: "btn btn-flat event-top__btn registration" do %>
+                <%= link_to new_user_registration_path,class: "btn btn-flat event-top__btn registration-btn" do %>
                     <span>
                         <%= t("user.registration") %>
                     </span>
                 <% end %>
-                <%= link_to new_user_session_path, class: "btn btn-flat event-top__btn login" do %>
+                <%= link_to new_user_session_path, class: "btn btn-flat event-top__btn login-btn" do %>
                     <span>
                         <%= t("user.login") %>
                     </span>
