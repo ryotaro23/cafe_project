@@ -4,6 +4,25 @@
     <div class="event-top__img">
         <%= image_tag 'top-image.jpg' %>
     </div>
+    <div class="event-top__content text-center">
+        <h1 class = "event-top__title" id = "js-typing">
+            <%= t("title.welcome") %>
+        </h1>
+        <div class="event-top__btn__wrapper">
+            <% if not current_user %>
+                <%= link_to new_user_registration_path,class: "btn btn-flat event-top__btn registration-btn" do %>
+                    <span>
+                        <%= t("user.registration") %>
+                    </span>
+                <% end %>
+                <%= link_to new_user_session_path, class: "btn btn-flat event-top__btn login-btn" do %>
+                    <span>
+                        <%= t("user.login") %>
+                    </span>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
 </div>
 
 <div class="event-info">
@@ -15,13 +34,12 @@
     <div class="js-events">
         <% @events.each do |event| %>
             <div class="slider">
-                <%= link_to event_path(event.id) do %>
+                <%= link_to event_path(event.id), class: "event-link" do %>
                     <%= image_tag event.image %>
                 <% end %>
             </div>
         <% end %>
     </div>
-
     <h3 class="event-info__title text-center title-text">
         <%= t("title.what_is") %>
     </h3>

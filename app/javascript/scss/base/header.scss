@@ -192,15 +192,18 @@
 
 .is-active  {
 
-        .btn-menu__bars {
-            background-color: transparent;
+    .btn-menu__bars {
+        background-color: transparent;
 
-            &:before {
-                transform: rotate(45deg);
-            }
+        &:before {
+            transform: rotate(45deg);
+        }
 
-            &:after {
-                transform: rotate(-45deg);
-            }
+        &:after {
+            transform: rotate(-45deg);
         }
     }
+}
+
+
+

@@ -4,6 +4,7 @@
 @import 'import/slick';
 
 //base
+@import "base/font";
 @import "base/status";
 @import "base/base";
 @import "base/header";
@@ -17,3 +18,5 @@
 @import "component/greeting";
 
 @import "parts/filter-image";
+@import "parts/button";
+@import "parts/logins";

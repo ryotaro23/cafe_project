@@ -75,6 +75,7 @@
     }
 }
 
+// resize image and cut circle shape
 @mixin circle-image($size) {
     width: $size;
     height: $size;
