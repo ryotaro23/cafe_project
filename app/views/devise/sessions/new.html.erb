@@ -1,7 +1,13 @@
 <section class="login__container">
+    <%= notice %>
+    <%= alert %>
     <div class="login">
         <div class="login__wrapper">
-            <div class="active login__title"> sign in </div>
+            <div class="active login__title">
+                <h3 class="login__title-text" id = "js-login-title">
+                    <%= Settings.web[:circle_name] %>
+                </h3>
+            </div>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <div class="field login__field">
                     <%= f.label :email %><br />

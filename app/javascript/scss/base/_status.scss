@@ -18,14 +18,12 @@ $title-color: linear-gradient(180deg, #739983 0, #739983 52%, #538065 52%, #5380
 
 $twitter-color: #0886e0;
 
-// font Roboto
-@import url(https://fonts.googleapis.com/css?family=Vollkorn|Roboto);
-
 $font-size-body: 1.4rem;
 $font-size-secondary: 1.3rem;
 $font-family-base: 'Roboto', sans-serif;
 $font-family-raleway: Raleway, $font-family-base;
 $font-family-medel: Medel, $font-family-base;
+$font-family-login: 'Great Vibes', cursive;
 
 $size-s: 600px;
 $size-m: 992px;
