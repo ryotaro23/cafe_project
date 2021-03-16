@@ -1,0 +1,12 @@
+.greeting-info {
+
+    &__img img {
+        @include circle-image(250px);
+    }
+
+    &__message {
+        width: 80%;
+        margin: 30px auto;
+        font-size: 16px;
+    }
+}

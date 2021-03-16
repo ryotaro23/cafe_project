@@ -1,0 +1,15 @@
+.event-top {
+
+    &__img {
+
+        img {
+            height: 60vw;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.event-info {
+    background: $background-color;
+}
