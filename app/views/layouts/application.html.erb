@@ -8,6 +8,10 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous" />
   </head>
 
   <body>
@@ -15,13 +19,13 @@
       <div class="header__container">
         <!-- logo -->
         <%= link_to "/" , class: "header__logo content-center" do %>
-          <%= image_tag 'cafe-logo.png' , class: 'header__logo-img' %> Cafe Modern
+          <%= image_tag 'cafe-logo.png' , class: 'header__logo-img' %>
+          <%= Settings.web[:circle_name] %>
         <% end %>
 
         <!-- hamburger menu -->
         <button class="btn-menu" id="js-ham" type="button">
           <i class="btn-menu__bars"></i>
-          <span class="sr-only">Menu</span>
         </button>
       </div>
     </header>
@@ -54,6 +58,14 @@
       </nav>
     </div>
     <%= yield %>
+
+    <footer class="footer">
+      <div class="footer__container  text-center">
+        <small class="footer__circle-name">
+          <%= Settings.web.footer[:copyright] %>
+        </small>
+      </div>
+    </footer>
   </body>
 
   <script>

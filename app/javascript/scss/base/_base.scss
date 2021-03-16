@@ -783,3 +783,11 @@ hr {
     display: flex;
     align-items: center;
 }
+
+.title-text {
+    font-size: 6.666vw;
+    background-image: $title-color;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 50px 0 30px;
+}
