@@ -15,6 +15,7 @@ services:
       - 10000:3000
     depends_on:
       - db
+      - chrome
     tty: true
     stdin_open: true
     networks:
@@ -49,6 +50,17 @@ services:
     - pgadmin-data:/var/lib/pgadmin
     links:
     - "db:pgsql-server"
+    networks:
+      - cafe
+
+  chrome:
+    # 本番用
+    # image: selenium/standalone-chrome:latest
+    # デバッグ用
+    image: selenium/standalone-chrome-debug:latest
+    ports:
+      # - 4444:4444
+      - 5900:5900
     networks:
       - cafe
 

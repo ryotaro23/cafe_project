@@ -21,11 +21,23 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# テスト用
 gem 'rspec-rails'
+gem 'capybara', '>= 3.26'
+gem 'selenium-webdriver'
+gem "factory_bot_rails"
+gem 'faker'
 
 # ユーザー登録
 gem 'activeadmin'
 gem 'devise'
+
+# rails-i18n
+gem 'rails-i18n'
+
+# config
+gem 'config'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

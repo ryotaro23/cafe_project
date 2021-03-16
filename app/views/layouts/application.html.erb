@@ -8,30 +8,66 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous" />
   </head>
 
   <body>
-    <li>
-      <%= link_to "創設者挨拶", greeting_events_path %>
-    </li>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "マイページへ", user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to "ログアウト" , destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-        <li>
-          <%= link_to "新規登録" , new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン" , new_user_session_path %>
-        </li>
-    <% end %>
-    <li>
-      <%= link_to "お問い合わせ" , "https://form.run/@cafe-moden" %>
-    </li>
+    <header class = "header content-center">
+      <div class="header__container">
+        <!-- logo -->
+        <%= link_to "/" , class: "header__logo content-center" do %>
+          <%= image_tag 'cafe-logo.png' , class: 'header__logo-img' %>
+          <%= Settings.web[:circle_name] %>
+        <% end %>
+
+        <!-- hamburger menu -->
+        <button class="btn-menu" id="js-ham" type="button">
+          <i class="btn-menu__bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="global-menu" id="js-modal">
+      <nav class="global-menu__nav">
+        <ul class="global-menu__list">
+          <li class="global-menu__item">
+            <%= link_to "創設者挨拶" , greeting_events_path %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="global-menu__item">
+              <%= link_to "マイページへ" , user_path(current_user.id) %>
+            </li>
+            <li class="global-menu__item">
+              <%= link_to "ログアウト" , destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="global-menu__item">
+              <%= link_to "新規登録" , new_user_registration_path %>
+            </li>
+            <li class="global-menu__item">
+              <%= link_to "ログイン" , new_user_session_path %>
+            </li>
+          <% end %>
+          <li class="global-menu__item">
+            <%= link_to "お問い合わせ" , Settings.web[:formrun] %>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <%= yield %>
+
+    <footer class="footer">
+      <div class="footer__container  text-center">
+        <small class="footer__circle-name">
+          <%= Settings.web.footer[:copyright] %>
+        </small>
+      </div>
+    </footer>
   </body>
+
+  <script>
+  </script>
 </html>

@@ -1,11 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<h1><%= t 'index.name' %></h1>
+
+  <div class = "js-events">
+    <% @events.each do |event| %>
+      <div class="slider">
+        <%= image_tag event.image %>
+      </div>
+    <% end %>
+  </div>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= t('index.name')  %></th>
       <th>Time</th>
       <th>Recommend menu</th>
       <th>Place</th>
@@ -27,6 +35,4 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-

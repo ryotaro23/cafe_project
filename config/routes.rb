@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'users/show'
   resources :events, only: [:show, :index] do
     # topページへのルーティングを追加
     collection do
@@ -18,7 +17,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  root  'events#index'  #この1行を追加
+  root  'events#top'  #この1行を追加
 
   resources :users, only: [:show, :edit, :update]
 

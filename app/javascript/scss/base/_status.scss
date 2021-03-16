@@ -1,26 +1,27 @@
-$primary-color: #eb6877;
 $secondary-color: #6dd0b0;
-$tertiary-color: #c85965;
 $link-color: rgba(69, 69, 69, 0.5);
 $text-info: #959595;
 $text-dark: #434343;
-$text-light: #88b3d3;
-$background-primary: #eb6877;
-$background-danger: #ff9e82;
-$background-color-grey: #f2f2f2;
-$background-color-white: #fff;
+
+// $base-color: #c3898b;
+$base-color: #FF5252;
+$accent-color: #fcfafa;
 
 $color-text: #707070;
-$color-freelance: #33568c;
-$color-career: #6dd0b0;
 
 $border-color: #bfbfbf;
-$button-color: #f2f2f2;
+
+$background-color: #f7f6f4;
+$footer-color: #639983;
+
+$title-color: linear-gradient(180deg, #739983 0, #739983 52%, #538065 52%, #538065 100%);;
+
+// font Roboto
+@import url(https://fonts.googleapis.com/css?family=Vollkorn|Roboto);
 
 $font-size-body: 1.4rem;
 $font-size-secondary: 1.3rem;
-$font-family-base: "Hiragino Kaku Gothic ProN", "メイリオ", helvetica,
-    sans-serif;
+$font-family-base: 'Roboto', sans-serif;
 $font-family-raleway: Raleway, $font-family-base;
 $font-family-medel: Medel, $font-family-base;
 
@@ -43,8 +44,3 @@ $xxxl: 1600px;
 //FONTAWESOME CUSTOMIZE
 $fa-font-path: "../../node_modules/@fortawesome/fontawesome-free/webfonts";
 
-//BOOSTRAP CUSTOMIZE
-$nav-tabs-border-color: $border-color;
-$nav-tabs-link-hover-border-color: #e9ecef #e9ecef $border-color;
-$nav-tabs-link-active-border-color: $border-color $border-color #fff;
-$color-red: red;

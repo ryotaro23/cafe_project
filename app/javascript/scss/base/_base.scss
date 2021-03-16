@@ -101,9 +101,6 @@ p {
     margin: 0;
 }
 
-b {
-    color: $primary-color;
-}
 
 h2 {
     font-size: 40px;
@@ -175,12 +172,6 @@ img {
     max-width: 100%;
 }
 
-// a:link {
-//   color: $text-info;
-// }
-// a:visited {
-//   color: $text-info;
-// }
 a,
 a:hover,
 a:active {
@@ -689,25 +680,6 @@ hr {
     display: none;
 }
 
-.color-pink {
-    color: $primary-color;
-}
-
-.color-black {
-    color: #000;
-}
-
-.color-gray {
-    color: $text-info;
-}
-
-.color-green {
-    color: $secondary-color;
-}
-
-.color-text {
-    color: $color-text;
-}
 
 .gutter-20 {
     margin-left: -10px;
@@ -805,4 +777,17 @@ hr {
 
 .vr-middle {
     vertical-align: middle;
+}
+
+.content-center {
+    display: flex;
+    align-items: center;
+}
+
+.title-text {
+    font-size: 6.666vw;
+    background-image: $title-color;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 50px 0 30px;
 }

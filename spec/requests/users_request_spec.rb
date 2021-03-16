@@ -4,7 +4,8 @@ RSpec.describe "Users", type: :request do
 
   describe "GET /show" do
     it "returns http success" do
-      get "/users/show"
+      user = User.find(1)
+      get "/users/#{user.id}"
       expect(response).to have_http_status(:success)
     end
   end
