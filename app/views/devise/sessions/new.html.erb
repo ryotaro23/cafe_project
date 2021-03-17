@@ -1,7 +1,5 @@
-<section class="login__container">
-    <%= notice %>
-    <%= alert %>
-    <div class="login">
+<section class="login">
+    <div class="login__container">
         <div class="login__wrapper">
             <div class="active login__title">
                 <h3 class="login__title-text" id = "js-login-title">
@@ -9,6 +7,10 @@
                 </h3>
             </div>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="notice">
+                    <%= notice %>
+                    <%= alert %>
+                </div>
                 <div class="field login__field">
                     <%= f.label :email %><br />
                     <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "login__input js-login-email" %>
@@ -27,7 +29,7 @@
                 <% end %>
 
                 <div class="actions text-center">
-                    <%= f.submit "ログイン", class: "login__submit js-login-submit", disabled:true %>
+                    <%= f.submit "ログイン", class: "login__submit js-login-submit" %>
                 </div>
             <% end %>
         </div>

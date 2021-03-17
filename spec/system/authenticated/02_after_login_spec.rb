@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '[STEP2] ユーザログイン後のテスト' do
+describe 'ユーザログイン後のテスト' do
     let(:user) { create(:user) }
     # let!(:other_user) { create(:user) }
     let(:event) { create(:event) }
@@ -114,34 +114,34 @@ describe '[STEP2] ユーザログイン後のテスト' do
 #     end
     end
 
-#   describe '自分の投稿詳細画面のテスト' do
-#     before do
-#       visit book_path(book)
-#     end
+    # describe '自分の投稿詳細画面のテスト' do
+    #     before do
+    #     visit book_path(book)
+    #     end
 
-#     context '表示内容の確認' do
-#       it 'URLが正しい' do
-#         expect(current_path).to eq '/books/' + book.id.to_s
-#       end
-#       it '「Book detail」と表示される' do
-#         expect(page).to have_content 'Book detail'
-#       end
-#       it 'ユーザ画像・名前のリンク先が正しい' do
-#         expect(page).to have_link book.user.name, href: user_path(book.user)
-#       end
-#       it '投稿のtitleが表示される' do
-#         expect(page).to have_content book.title
-#       end
-#       it '投稿のopinionが表示される' do
-#         expect(page).to have_content book.body
-#       end
-#       it '投稿の編集リンクが表示される' do
-#         expect(page).to have_link 'Edit', href: edit_book_path(book)
-#       end
-#       it '投稿の削除リンクが表示される' do
-#         expect(page).to have_link 'Destroy', href: book_path(book)
-#       end
-#     end
+    #     context '表示内容の確認' do
+    #         it 'URLが正しい' do
+    #             expect(current_path).to eq '/books/' + book.id.to_s
+    #         end
+    #         it '「Book detail」と表示される' do
+    #             expect(page).to have_content 'Book detail'
+    #         end
+    #         it 'ユーザ画像・名前のリンク先が正しい' do
+    #             expect(page).to have_link book.user.name, href: user_path(book.user)
+    #         end
+    #         it '投稿のtitleが表示される' do
+    #             expect(page).to have_content book.title
+    #         end
+    #         it '投稿のopinionが表示される' do
+    #             expect(page).to have_content book.body
+    #         end
+    #         it '投稿の編集リンクが表示される' do
+    #             expect(page).to have_link 'Edit', href: edit_book_path(book)
+    #         end
+    #         it '投稿の削除リンクが表示される' do
+    #             expect(page).to have_link 'Destroy', href: book_path(book)
+    #         end
+    #     end
 
 #     context 'サイドバーの確認' do
 #       it '自分の名前と紹介文が表示される' do
@@ -201,7 +201,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
 #         expect(current_path).to eq '/books'
 #       end
 #     end
-#   end
+    # end
 
 #   describe '自分の投稿編集画面のテスト' do
 #     before do
