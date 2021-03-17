@@ -1,14 +1,21 @@
 .login {
-    padding: 20vw 0;
+    background-image: url(../images/cafe-login.jpg);
+    position: relative;
+    background-size: cover;
+    height: 100vh;
+
+    .notice {
+        background: $error-backgroud;
+        color: red;
+        padding: 10px;
+        font-size: 14px;
+    }
 
     &__container {
-        background: url(https://images.unsplash.com/photo-1511920170033-f8396924c348?ixid=MXwxMjA3fDB8MHxzZWFyY2h8N3x8Y2FmZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat   center center #505050;
-        position: relative;
-        background-size: cover;
+        padding: 150px 0;
     }
 
     &__wrapper {
-        height: 560px;
         width: 405px;
         margin: auto;
         box-shadow: 0px 30px 60px -5px #000;
@@ -33,7 +40,7 @@
             font-family: $font-family-login;
             font-weight: bold;
             font-size: 2em;
-            transition: all 400ms cubic-bezier(0.545, 0.080, 0.520, 0.975);
+            transition: all 400ms cubic-bezier(0.545, 0.08, 0.52, 0.975);
         }
     }
 
@@ -49,7 +56,7 @@
         display: block;
         height: 30px;
         border-radius: 20px;
-        background: rgba(255, 255, 255, .9);
+        background: rgba(255, 255, 255, 0.9);
         border: 2px solid rgba(255, 255, 255, 0);
         overflow: hidden;
         margin-top: 15px;
@@ -60,7 +67,7 @@
             outline: 0;
             border: 2px solid rgba(255, 255, 255, 1);
             border-radius: 20px;
-            background: rgba(222, 222, 222, 1);
+            background: rgba(210, 255, 255, 1);
             transform: scale(1.1);
         }
     }
@@ -80,10 +87,8 @@
             border: 3px solid $twitter-color;
         }
     }
-
 }
 
 input:-webkit-autofill {
--webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
-

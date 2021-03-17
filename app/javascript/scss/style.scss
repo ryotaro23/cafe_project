@@ -7,16 +7,18 @@
 @import "base/font";
 @import "base/status";
 @import "base/base";
-@import "base/header";
-@import "base/footer";
 
 // mixin
 @import "mixin/mixin";
 
 // each　section
-@import "component/event-top";
-@import "component/greeting";
+@import "component/event/top";
+@import "component/event/greeting";
+@import "component/device/logins";
+@import "component/device/registration";
 
+@import "parts/header";
+@import "parts/footer";
 @import "parts/filter-image";
 @import "parts/button";
-@import "parts/logins";
+
