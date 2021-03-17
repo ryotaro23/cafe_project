@@ -82,3 +82,9 @@
     object-fit: cover;
     border-radius: 50%;
 }
+
+@mixin square-image($size) {
+    width: $size;
+    height: $size;
+    object-fit: cover;
+}

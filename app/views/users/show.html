@@ -1,0 +1,34 @@
+<section class="greeting">
+    <div class="filter-top">
+        <%= image_tag("afternoon.jpg") %>
+        <p class="greeting-top__text text-center">
+        <%= t("mypage.title") %>
+        </p>
+    </div>
+    <%= @user.name %>
+
+    <h3>参加予定の活動</h3>
+    <% @events.each do |event| %>
+        <%= link_to event_path(event.event.id) do %>
+            <%= event.event.name %>
+        <% end %>
+    <% end %>
+
+    <%= link_to "編集" , edit_user_path(@user.id) %>
+
+    <div class="mypage-info">
+        <h3 class="mypage-info__title text-center title-text">
+            <%= t("mypage.profile") %>
+        </h3>
+        <div class="mypage-info__img text-center">
+            <% if @user.user_image.attached? %>
+                <%= image_tag @user.user_image %>
+            <% else %>
+                <%= image_tag("no-image-male.jpg") %>
+            <% end %>
+        </div>
+        <div class="mypage-info__message">
+            <%= t("greeting.message_html") %>
+        </div>
+    </div>
+</section>
