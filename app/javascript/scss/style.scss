@@ -11,14 +11,16 @@
 // mixin
 @import "mixin/mixin";
 
+// parts
+@import "parts/header";
+@import "parts/footer";
+@import "parts/filter-image";
+@import "parts/button";
+
 // each　section
 @import "component/event/top";
 @import "component/event/greeting";
 @import "component/device/logins";
 @import "component/device/registration";
-
-@import "parts/header";
-@import "parts/footer";
-@import "parts/filter-image";
-@import "parts/button";
+@import "component/user/mypage";
 
