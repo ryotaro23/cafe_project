@@ -24,6 +24,7 @@ body {
     overflow-x: hidden;
     word-break: break-word;
     word-wrap: break-word;
+    position: relative;
 
     @media (max-width: $size-xl - 1) {
         font-size: 140% !important;
