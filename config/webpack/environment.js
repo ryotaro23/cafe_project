@@ -1,8 +1,12 @@
 const { environment } = require('@rails/webpacker')
 
+// setting to use typescript
+const typescript = require('./loaders/typescript')
+environment.loaders.prepend('typescript', typescript)
+
 
 // ここから
-// jQueryとBootstapのJSを使えるように
+// jQuery&Bootstap
 const webpack = require('webpack')
 environment.plugins.prepend(
   'Provide',
