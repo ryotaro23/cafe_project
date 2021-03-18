@@ -1,22 +1,27 @@
 // initial import liblary
 @import "~bootstrap/scss/bootstrap";
 @import "~hamburgers/_sass/hamburgers/hamburgers";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import 'import/slick';
 
 //base
 @import "base/font";
 @import "base/status";
 @import "base/base";
-@import "base/header";
-@import "base/footer";
 
 // mixin
 @import "mixin/mixin";
 
-// each　section
-@import "component/event-top";
-@import "component/greeting";
-
+// parts
+@import "parts/header";
+@import "parts/footer";
 @import "parts/filter-image";
 @import "parts/button";
-@import "parts/logins";
+
+// each　section
+@import "component/event/top";
+@import "component/event/greeting";
+@import "component/device/logins";
+@import "component/device/registration";
+@import "component/user/mypage";
+

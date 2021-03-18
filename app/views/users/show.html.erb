@@ -1,18 +1,48 @@
-
-<%= @user.id %>
-<%= @user.name %>
-
-<% if @user.user_image.attached? %>
-    <%= image_tag @user.user_image %>
-<% else %>
-    <%= image_tag("no-image-male.jpg") %>
-<% end %>
-
-<h3>参加予定の活動</h3>
-<% @events.each do |event| %>
-    <%= link_to event_path(event.event.id) do %>
-        <%= event.event.name %>
-    <% end %>
-<% end %>
-
-<%= link_to "編集", edit_user_path(@user.id) %>
+<section class="mypage">
+    <div class="mypage__container">
+        <div class="mypage__wrapper">
+            <div class="mypage-info">
+                <div class="mypage-info__img text-center">
+                    <% if @user.user_image.attached? %>
+                        <%= image_tag @user.user_image %>
+                    <% else %>
+                        <%= image_tag("no-image-male.jpg") %>
+                    <% end %>
+                </div>
+                <div class="mypage-info__profile">
+                    <h3 class="mypage-info__profile-name text-center">
+                        <%= @user.name %>
+                    </h3>
+                    <p class = "mypage-info__profile-text text-center">
+                        <%= @user.university %>
+                        <!-- beginner or master? -->
+                        <% if @user.grade <= 4 %>
+                            学部<%= @user.grade %>年生
+                        <% elsif @user.grade >4 %>
+                            修士<%= @user.grade-4 %>年生
+                        <% end %>
+                    </p>
+                    <div class="mypage-info__profile-edit text-center">
+                        <%= link_to "編集" , edit_user_path(current_user), class: "btn-base" %>
+                    </div>
+                    <br>
+                    <h3 class="mypage-info__event-title text-center">
+                        〜〜 <%= t("mypage.event.join") %> 〜〜
+                    </h3>
+                    <% @events.each do |event| %>
+                        <%= link_to event_path(event.event.id) do %>
+                            <div class="mypage-info__event">
+                                <%= image_tag event.event.image %>
+                                <span>
+                                    <%= event.event.name %>
+                                </span>
+                            </div>
+                        <% end %>
+                    <% end %>
+                    <%= Time.zone.now %>
+                    <i class="far fa-window-maximize"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

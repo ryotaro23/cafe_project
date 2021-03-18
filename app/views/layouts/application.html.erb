@@ -20,7 +20,9 @@
         <!-- logo -->
         <%= link_to "/" , class: "header__logo content-center", id: "header-logo" do %>
           <%= image_tag 'cafe-logo.png' , class: 'header__logo-img' %>
-          <%= Settings.web[:circle_name] %>
+          <span>
+            <%= Settings.web[:circle_name] %>
+          </span>
         <% end %>
 
         <!-- hamburger menu -->
@@ -35,6 +37,9 @@
         <ul class="global-menu__list">
           <li class="global-menu__item">
             <%= link_to "代表者挨拶" , greeting_events_path %>
+          </li>
+          <li class="global-menu__item">
+            <%= link_to "イベント一覧" , events_path %>
           </li>
           <% if user_signed_in? %>
             <li class="global-menu__item">
