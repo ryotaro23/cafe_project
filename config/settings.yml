@@ -1,2 +1,5 @@
 web:
+  circle_name: Cafe Modern
   formrun: 'https://form.run/@cafe-moden'
+  footer:
+    copyright: © 2021 CAFEMODERN

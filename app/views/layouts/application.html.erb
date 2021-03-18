@@ -8,20 +8,26 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous" />
   </head>
 
   <body>
     <header class = "header content-center">
       <div class="header__container">
         <!-- logo -->
-        <%= link_to "/" , class: "header__logo content-center" do %>
-          <%= image_tag 'cafe-logo.png' , class: 'header__logo-img' %> Cafe Modern
+        <%= link_to "/" , class: "header__logo content-center", id: "header-logo" do %>
+          <%= image_tag 'cafe-logo.png' , class: 'header__logo-img' %>
+          <span>
+            <%= Settings.web[:circle_name] %>
+          </span>
         <% end %>
 
         <!-- hamburger menu -->
         <button class="btn-menu" id="js-ham" type="button">
           <i class="btn-menu__bars"></i>
-          <span class="sr-only">Menu</span>
         </button>
       </div>
     </header>
@@ -30,11 +36,14 @@
       <nav class="global-menu__nav">
         <ul class="global-menu__list">
           <li class="global-menu__item">
-            <%= link_to "創設者挨拶" , greeting_events_path %>
+            <%= link_to "代表者挨拶" , greeting_events_path %>
+          </li>
+          <li class="global-menu__item">
+            <%= link_to "イベント一覧" , events_path %>
           </li>
           <% if user_signed_in? %>
             <li class="global-menu__item">
-              <%= link_to "マイページへ" , user_path(current_user.id) %>
+              <%= link_to "マイページ" , user_path(current_user.id) %>
             </li>
             <li class="global-menu__item">
               <%= link_to "ログアウト" , destroy_user_session_path, method: :delete %>
@@ -54,6 +63,14 @@
       </nav>
     </div>
     <%= yield %>
+
+    <footer class="footer">
+      <div class="footer__container  text-center">
+        <small class="footer__circle-name">
+          <%= Settings.web.footer[:copyright] %>
+        </small>
+      </div>
+    </footer>
   </body>
 
   <script>

@@ -11,14 +11,21 @@ $color-text: #707070;
 
 $border-color: #bfbfbf;
 
-// font Roboto
-@import url(https://fonts.googleapis.com/css?family=Vollkorn|Roboto);
+$background-color: #f7f6f4;
+$footer-color: #639983;
+
+$title-color: linear-gradient(180deg, #739983 0, #739983 52%, #538065 52%, #538065 100%);
+
+$twitter-color: #0886e0;
+
+$error-backgroud: #fff3cd;
 
 $font-size-body: 1.4rem;
 $font-size-secondary: 1.3rem;
 $font-family-base: 'Roboto', sans-serif;
 $font-family-raleway: Raleway, $font-family-base;
 $font-family-medel: Medel, $font-family-base;
+$font-family-login: 'Great Vibes', cursive;
 
 $size-s: 600px;
 $size-m: 992px;

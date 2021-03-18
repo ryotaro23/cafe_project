@@ -1,65 +1,74 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# describe '[STEP2] ユーザログイン後のテスト' do
-#   let(:user) { create(:user) }
-#   let!(:other_user) { create(:user) }
-#   let!(:book) { create(:book, user: user) }
-#   let!(:other_book) { create(:book, user: other_user) }
+describe 'ユーザログイン後のテスト' do
+    let(:user) { create(:user) }
+    # let!(:other_user) { create(:user) }
+    let(:event) { create(:event) }
+    # let!(:book) { create(:book, user: user) }
 
-#   before do
-#     visit new_user_session_path
-#     fill_in 'user[name]', with: user.name
-#     fill_in 'user[password]', with: user.password
-#     click_button 'Log in'
-#   end
+        before do
+            visit user_session_path
+            fill_in 'user[email]', with: user.email
+            fill_in 'user[password]', with: user.password
+            click_button 'ログイン'
+        end
 
-#   describe 'ヘッダーのテスト: ログインしている場合' do
-#     context 'リンクの内容を確認: ※logoutは『ユーザログアウトのテスト』でテスト済みになります。' do
-#       subject { current_path }
+        describe 'ヘッダーのテスト: ログインしている場合' do
+            context 'リンクの内容を確認: ※logoutは『ユーザログアウトのテスト』でテスト済みになります。' do
+                subject { current_path }
 
-#       it 'Homeを押すと、自分のユーザ詳細画面に遷移する' do
-#         home_link = find_all('a')[1].native.inner_text
-#         home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-#         click_link home_link
-#         is_expected.to eq '/users/' + user.id.to_s
-#       end
-#       it 'Usersを押すと、ユーザ一覧画面に遷移する' do
-#         users_link = find_all('a')[2].native.inner_text
-#         users_link = users_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-#         click_link users_link
-#         is_expected.to eq '/users'
-#       end
-#       it 'Booksを押すと、投稿一覧画面に遷移する' do
-#         books_link = find_all('a')[3].native.inner_text
-#         books_link = books_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-#         click_link books_link
-#         is_expected.to eq '/books'
-#       end
-#     end
-#   end
+                it 'ヘッダーロゴのルーティング' do
+                    logo = find_by_id('header-logo')
+                    logo.click
+                    is_expected.to eq '/'
+                end
 
-#   describe '投稿一覧画面のテスト' do
-#     before do
-#       visit books_path
-#     end
+                it '代表者挨拶のルーティング' do
+                    click_on '代表者挨拶'
+                    is_expected.to eq '/events/greeting'
+                end
 
-#     context '表示内容の確認' do
-#       it 'URLが正しい' do
-#         expect(current_path).to eq '/books'
-#       end
-#       it '自分と他人の画像のリンク先が正しい' do
-#         expect(page).to have_link '', href: user_path(book.user)
-#         expect(page).to have_link '', href: user_path(other_book.user)
-#       end
-#       it '自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい' do
-#         expect(page).to have_link book.title, href: book_path(book)
-#         expect(page).to have_link other_book.title, href: book_path(other_book)
-#       end
-#       it '自分の投稿と他人の投稿のオピニオンが表示される' do
-#         expect(page).to have_content book.body
-#         expect(page).to have_content other_book.body
-#       end
-#     end
+                it 'マイページのルーティング' do
+                    click_on 'マイページ'
+                    is_expected.to eq '/users/' + user.id.to_s
+                end
+
+                it 'ヘッダーに新規登録とログインがないことを確認する' do
+                    expect(page).to have_no_xpath '//a[contains(text(), "新規登録")]'
+                    expect(page).to have_no_xpath '//a[contains(text(), "新規登録")]'
+                end
+            end
+        end
+
+    describe 'トップページの確認' do
+
+        before do
+            visit root_path
+        end
+
+        context '表示内容の確認' do
+
+            it 'URLが正しい' do
+                expect(current_path).to eq '/'
+            end
+
+            # it '自分と他人の画像のリンク先が正しい' do
+            #     expect(page).to have_link '', href: user_path(book.user)
+            #     expect(page).to have_link '', href: user_path(other_book.user)
+            # end
+
+            # it '自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい' do
+            #     expect(page).to have_link book.title, href: book_path(book)
+            #     expect(page).to have_link other_book.title, href: book_path(other_book)
+            # end
+
+            # it '自分の投稿と他人の投稿のオピニオンが表示される' do
+            #     expect(page).to have_content book.body
+            #     expect(page).to have_content other_book.body
+            # end
+
+
+        end
 
 #     context 'サイドバーの確認' do
 #       it '自分の名前と紹介文が表示される' do
@@ -103,36 +112,36 @@
 #         expect(current_path).to eq '/books/' + Book.last.id.to_s
 #       end
 #     end
-#   end
+    end
 
-#   describe '自分の投稿詳細画面のテスト' do
-#     before do
-#       visit book_path(book)
-#     end
+    # describe '自分の投稿詳細画面のテスト' do
+    #     before do
+    #     visit book_path(book)
+    #     end
 
-#     context '表示内容の確認' do
-#       it 'URLが正しい' do
-#         expect(current_path).to eq '/books/' + book.id.to_s
-#       end
-#       it '「Book detail」と表示される' do
-#         expect(page).to have_content 'Book detail'
-#       end
-#       it 'ユーザ画像・名前のリンク先が正しい' do
-#         expect(page).to have_link book.user.name, href: user_path(book.user)
-#       end
-#       it '投稿のtitleが表示される' do
-#         expect(page).to have_content book.title
-#       end
-#       it '投稿のopinionが表示される' do
-#         expect(page).to have_content book.body
-#       end
-#       it '投稿の編集リンクが表示される' do
-#         expect(page).to have_link 'Edit', href: edit_book_path(book)
-#       end
-#       it '投稿の削除リンクが表示される' do
-#         expect(page).to have_link 'Destroy', href: book_path(book)
-#       end
-#     end
+    #     context '表示内容の確認' do
+    #         it 'URLが正しい' do
+    #             expect(current_path).to eq '/books/' + book.id.to_s
+    #         end
+    #         it '「Book detail」と表示される' do
+    #             expect(page).to have_content 'Book detail'
+    #         end
+    #         it 'ユーザ画像・名前のリンク先が正しい' do
+    #             expect(page).to have_link book.user.name, href: user_path(book.user)
+    #         end
+    #         it '投稿のtitleが表示される' do
+    #             expect(page).to have_content book.title
+    #         end
+    #         it '投稿のopinionが表示される' do
+    #             expect(page).to have_content book.body
+    #         end
+    #         it '投稿の編集リンクが表示される' do
+    #             expect(page).to have_link 'Edit', href: edit_book_path(book)
+    #         end
+    #         it '投稿の削除リンクが表示される' do
+    #             expect(page).to have_link 'Destroy', href: book_path(book)
+    #         end
+    #     end
 
 #     context 'サイドバーの確認' do
 #       it '自分の名前と紹介文が表示される' do
@@ -192,7 +201,7 @@
 #         expect(current_path).to eq '/books'
 #       end
 #     end
-#   end
+    # end
 
 #   describe '自分の投稿編集画面のテスト' do
 #     before do
@@ -393,4 +402,4 @@
 #       end
 #     end
 #   end
-# end
+end

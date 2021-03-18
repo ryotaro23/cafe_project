@@ -1,72 +1,173 @@
 require 'rails_helper'
 
-describe '[STEP1] ユーザログイン前のテスト' do
+describe 'ユーザログイン前のテスト' do
+  let(:user) { create(:user) }
+  let(:event) { create(:event) }
+
   describe 'トップ画面のテスト' do
     before do
       visit root_path
     end
 
-    context '表示内容の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq '/'
+    describe 'ヘッダーのテスト: ログインしていない場合' do
+      context 'ヘッダーのルーティングの確認' do
+        subject { current_path }
+
+        it '新規登録のルーティング' do
+            # click_on '新規登録'
+            find(:xpath, '//a[contains(text(), "新規登録")]').click
+            is_expected.to eq '/users/sign_up'
+        end
+
+        it 'ログインのルーティング' do
+            find(:xpath, '//a[contains(text(), "ログイン")]').click
+            # click_on 'ログイン'
+            is_expected.to eq '/users/sign_in'
+        end
+
+        it 'ヘッダーに新規登録とログインがないことを確認する' do
+            expect(page).to have_no_content 'マイページ'
+            expect(page).to have_no_content 'ログアウト'
+        end
+
       end
-      # it 'Log inリンクが表示される: 左上から5番目のリンクが「Log in」である' do
-      #   log_in_link = find_all('a')[5].native.inner_text
-      #   expect(log_in_link).to match(/log in/i)
-      # end
-      # it 'Log inリンクの内容が正しい' do
-      #   log_in_link = find_all('a')[5].native.inner_text
-      #   expect(page).to have_link log_in_link, href: new_user_session_path
-      # end
-      # it 'Sign Upリンクが表示される: 左上から6番目のリンクが「Sign Up」である' do
-      #   sign_up_link = find_all('a')[6].native.inner_text
-      #   expect(sign_up_link).to match(/sign up/i)
-      # end
-      # it 'Sign Upリンクの内容が正しい' do
-      #   sign_up_link = find_all('a')[6].native.inner_text
-      #   expect(page).to have_link sign_up_link, href: new_user_registration_path
-      # end
+
     end
   end
 
-  # describe 'アバウト画面のテスト' do
-  #   before do
-  #     visit '/home/about'
-  #   end
+  describe 'トップ画面のテスト' do
 
-  #   context '表示内容の確認' do
-  #     it 'URLが正しい' do
-  #       expect(current_path).to eq '/home/about'
-  #     end
-  #   end
-  # end
+    before do
+      visit root_path
+    end
 
-  # describe 'ヘッダーのテスト: ログインしていない場合' do
-  #   before do
-  #     visit root_path
-  #   end
+    context '表示内容の確認' do
 
-  #   context '表示内容の確認' do
-  #     it 'タイトルが表示される' do
-  #       expect(page).to have_content 'Bookers'
-  #     end
-  #     it 'Homeリンクが表示される: 左上から1番目のリンクが「Home」である' do
-  #       home_link = find_all('a')[1].native.inner_text
-  #       expect(home_link).to match(/home/i)
-  #     end
-  #     it 'Aboutリンクが表示される: 左上から2番目のリンクが「About」である' do
-  #       about_link = find_all('a')[2].native.inner_text
-  #       expect(about_link).to match(/about/i)
-  #     end
-  #     it 'sign upリンクが表示される: 左上から3番目のリンクが「sign up」である' do
-  #       signup_link = find_all('a')[3].native.inner_text
-  #       expect(signup_link).to match(/sign up/i)
-  #     end
-  #     it 'loginリンクが表示される: 左上から4番目のリンクが「login」である' do
-  #       login_link = find_all('a')[4].native.inner_text
-  #       expect(login_link).to match(/login/i)
-  #     end
-  #   end
+      it 'イベント詳細がクリックできる' do
+        expect(page).to have_content("Events")
+        find_all(".event-link")[0].click
+        expect(page).to have_content '参加人数'
+      end
+
+      it 'ログインボタンからログイン処理ができるか確かめる' do
+        find(:xpath, '//a[contains(@class, "event-top__btn login")]').click
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: user.password
+        click_button 'ログイン'
+        visit '/users/' + user.id.to_s
+        expect(page).to have_content '参加予定の活動'
+      end
+    end
+  end
+
+  describe 'ログインテスト' do
+    before do
+      visit new_user_session_path
+    end
+
+    context 'ログイン後のルーティング' do
+      it 'URLが正しい' do
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: user.password
+        click_button 'ログイン'
+        expect(current_path).to eq '/'
+      end
+    end
+
+    context 'ログインのエラー' do
+
+      it 'emailかパスワードが間違っている' do
+        fill_in 'user[email]', with: user.email + 'miss'
+        fill_in 'user[password]', with: user.password
+        click_button 'ログイン'
+        expect(current_path).to eq new_user_session_path
+        expect(page).to have_content 'アカウントが見つかりません'
+      end
+
+      it 'emailはあっているがパスワードが間違っている' do
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: '11111111'
+        click_button 'ログイン'
+        expect(current_path).to eq new_user_session_path
+        expect(page).to have_content '間違っています'
+      end
+    end
+  end
+
+  describe 'ユーザ新規登録のテスト' do
+    before do
+      visit new_user_registration_path
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/sign_up'
+      end
+      it 'nameフォームが表示される' do
+        expect(page).to have_field 'user[name]'
+      end
+      it 'emailフォームが表示される' do
+        expect(page).to have_field 'user[email]'
+      end
+      it 'passwordフォームが表示される' do
+        expect(page).to have_field 'user[password]'
+      end
+      it 'password_confirmationフォームが表示される' do
+        expect(page).to have_field 'user[password_confirmation]'
+      end
+      it 'universityフォームが表示される' do
+        expect(page).to have_field 'user[university]'
+      end
+      it '登録ボタンが表示される' do
+        expect(page).to have_field 'user[grade]'
+      end
+    end
+
+    context '新規登録成功のテスト' do
+      before do
+        fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[email]', with: Faker::Internet.email
+        fill_in 'user[password]', with: 'password'
+        fill_in 'user[password_confirmation]', with: 'password'
+        fill_in 'user[university]', with:  '東北大学'
+        select '1年生', from: 'Grade'
+      end
+
+      it '正しく新規登録される' do
+        expect { click_button '登録' }.to change(User.all, :count).by(1)
+      end
+
+      it '新規登録後のリダイレクト先が、新規登録できたユーザの詳細画面になっている' do
+        click_button '登録'
+        expect(current_path).to eq root_path
+      end
+    end
+
+    context '新規登録失敗のテスト' do
+      before do
+        fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: 'pass'
+        fill_in 'user[password_confirmation]', with: 'missw'
+        fill_in 'user[university]', with:  'マサチューセッツ工科大学'
+        select '1年生', from: 'Grade'
+      end
+
+      it 'エラーメッセージが全てが表示されるか？' do
+        fill_in 'user[password]', with: 'passwor'
+        click_button '登録'
+      end
+
+      it '新規登録後のリダイレクト先が、新規登録できたユーザの詳細画面になっている' do
+        click_button '登録'
+        expect(page).to have_content '一致しません'
+        expect(page).to have_content '6文字以上'
+        expect(page).to have_content '存在します'
+      end
+    end
+  end
+
+end
 
   #   context 'リンクの内容を確認' do
   #     subject { current_path }
@@ -95,53 +196,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
   #       login_link = login_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
   #       click_link login_link
   #       is_expected.to eq '/users/sign_in'
-  #     end
-  #   end
-  # end
-
-  # describe 'ユーザ新規登録のテスト' do
-  #   before do
-  #     visit new_user_registration_path
-  #   end
-
-  #   context '表示内容の確認' do
-  #     it 'URLが正しい' do
-  #       expect(current_path).to eq '/users/sign_up'
-  #     end
-  #     it '「Sign up」と表示される' do
-  #       expect(page).to have_content 'Sign up'
-  #     end
-  #     it 'nameフォームが表示される' do
-  #       expect(page).to have_field 'user[name]'
-  #     end
-  #     it 'emailフォームが表示される' do
-  #       expect(page).to have_field 'user[email]'
-  #     end
-  #     it 'passwordフォームが表示される' do
-  #       expect(page).to have_field 'user[password]'
-  #     end
-  #     it 'password_confirmationフォームが表示される' do
-  #       expect(page).to have_field 'user[password_confirmation]'
-  #     end
-  #     it 'Sign upボタンが表示される' do
-  #       expect(page).to have_button 'Sign up'
-  #     end
-  #   end
-
-  #   context '新規登録成功のテスト' do
-  #     before do
-  #       fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
-  #       fill_in 'user[email]', with: Faker::Internet.email
-  #       fill_in 'user[password]', with: 'password'
-  #       fill_in 'user[password_confirmation]', with: 'password'
-  #     end
-
-  #     it '正しく新規登録される' do
-  #       expect { click_button 'Sign up' }.to change(User.all, :count).by(1)
-  #     end
-  #     it '新規登録後のリダイレクト先が、新規登録できたユーザの詳細画面になっている' do
-  #       click_button 'Sign up'
-  #       expect(current_path).to eq '/users/' + User.last.id.to_s
   #     end
   #   end
   # end
@@ -254,4 +308,4 @@ describe '[STEP1] ユーザログイン前のテスト' do
   #     end
   #   end
   # end
-end
+# end

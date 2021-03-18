@@ -1,11 +1,27 @@
-// ブートストラップは最初に読み込まないと後半のscssがおかしいことになるので注意
+// initial import liblary
 @import "~bootstrap/scss/bootstrap";
 @import "~hamburgers/_sass/hamburgers/hamburgers";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'import/slick';
 
-@import 'hello/hello';
-
+//base
+@import "base/font";
 @import "base/status";
 @import "base/base";
-@import "base/header";
 
-@import "mixin/mixin"
+// mixin
+@import "mixin/mixin";
+
+// parts
+@import "parts/header";
+@import "parts/footer";
+@import "parts/filter-image";
+@import "parts/button";
+
+// each　section
+@import "component/event/top";
+@import "component/event/greeting";
+@import "component/device/logins";
+@import "component/device/registration";
+@import "component/user/mypage";
+

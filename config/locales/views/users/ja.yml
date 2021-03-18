@@ -1,0 +1,9 @@
+ja:
+  login:
+    title:
+  mypage:
+    title: マイページ
+    profile: あなたのプロフィール
+    event:
+      join: 参加予定の活動
+      nothing: 参加予定のイベントはありません

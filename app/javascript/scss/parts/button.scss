@@ -1,0 +1,82 @@
+@mixin btn-flat($color:#fff100, $pad-height: 1.0rem, $pad-width: 4rem) {
+    overflow: hidden;
+    padding: $pad-height $pad-width;
+    color: #fff;
+    border-radius: 50px;
+    background: #000;
+    position: relative;
+    font-size: 1.3rem;
+
+    span {
+        position: relative;
+        z-index: 1;
+    }
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: calc(-150% + 50px);
+        width: 150%;
+        height: 500%;
+        content: '';
+        -webkit-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        -webkit-transform: rotate(45deg) translateX(0) translateY(0);
+        transform: rotate(45deg) translateX(0) translateY(0);
+
+        background: #fff100;
+    }
+
+    &::after {
+        position: absolute;
+        top: -400%;
+        right: calc(-150% + 50px);
+        width: 150%;
+        height: 500%;
+        content: '';
+        -webkit-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        -webkit-transform: rotate(45deg) translateX(0) translateY(0);
+        transform: rotate(45deg) translateX(0) translateY(0);
+
+        background: #fff100;
+    }
+
+    &:hover {
+
+        &::before {
+            -webkit-transform: rotate(45deg) translateX(0) translateY(-50%);
+            transform: rotate(45deg) translateX(0) translateY(-50%);
+        }
+
+        &::after {
+            -webkit-transform: rotate(45deg) translateX(0) translateY(50%);
+            transform: rotate(45deg) translateX(0) translateY(50%);
+        }
+    }
+
+}
+
+@mixin btn-base($color:$base-color) {
+    margin: 30px 0;
+    padding: 5px 40px;
+    border-radius: 30px;
+    background: $color;
+    color: white;
+    border-color: white;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background: white;
+        color: $color;
+        border: 3px solid $color;
+    }
+}
+
+.btn-flat {
+    @include btn-flat();
+}
+
+.btn-base {
+    @include btn-base();
+}

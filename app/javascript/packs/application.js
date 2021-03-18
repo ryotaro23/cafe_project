@@ -8,17 +8,21 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-// Bootstrapのスタイルシート側の機能を読み込む
-// webpack.config.jsでcssを読み取れるようにへんこうを加える
 import "bootstrap/dist/css/bootstrap.min.css";
 // BootstrapのJavaScript側の機能を読み込む
 import "bootstrap";
+import '@fortawesome/fontawesome-free/js/all';
 
+// to use images in scss
+const images = require.context('../images', true);
+const imagePath = (name) => images(name, true);
+
+// import 'hello_typescript'
 import '../scss/application'
 import './header'
 import '../js/application'
-const images = require.context('../images', true)
