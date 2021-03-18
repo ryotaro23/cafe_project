@@ -16,6 +16,7 @@ ActiveStorage.start()
 import "bootstrap/dist/css/bootstrap.min.css";
 // BootstrapのJavaScript側の機能を読み込む
 import "bootstrap";
+import '@fortawesome/fontawesome-free/js/all';
 
 // to use images in scss
 const images = require.context('../images', true);
