@@ -1,5 +1,16 @@
 .profile {
 
+    &-modal-close {
+        position:absolute;
+        top:0;
+        left:0;
+        background:rgba(200,200,200,0.9);
+        width:100vw;
+        height:100%;
+        z-index:10;
+        display: none;
+    }
+
     .filter-top {
 
         height: 400px;
@@ -10,14 +21,29 @@
         }
     }
 
-    &__set-position {
-        position: relative;
-        width: 100vw;
+    &__set {
 
-        &-in {
-            position: absolute;
-            bottom: -125px;
+        &-position {
+            position: relative;
             width: 100vw;
+
+            &-in {
+                position: absolute;
+                bottom: -125px;
+                width: 100vw;
+            }
+        }
+
+
+        &__image {
+
+            &-filter {
+                @include circle-image(250px);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateY(-50%) translateX(-50%);
+            }
         }
     }
 
@@ -27,7 +53,19 @@
         border: 8px solid $base-color;
     }
 
-    &-modal {
+    &__icon {
+        display: block;
+        @include circle-image(250px);
+        &:hover {
+                    background:rgba(0,0,0,0.3);
+                }
+
+            svg {
+                cursor: pointer;
+            }
+    }
+
+    &__modal {
         position: fixed;
         width: 600px;
         height: 400px;
@@ -35,15 +73,62 @@
         left: 50%;
         margin-left: -300px;
         margin-top: -200px;
+        z-index: 11;
+        display: none;
 
         form {
             box-shadow: 0px 30px 60px -5px #000;
             margin: auto;
             height: 80%;
             background-color: #fff;
-
         }
 
+        &__input {
+            padding: 40px;
+        }
+
+        &__btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 28px;
+            color: inherit;
+            cursor: pointer;
+            z-index: 9999 !important;
+            transition: .7s ease;
+            border-radius: 100%;
+            padding: 30px 11px;
+
+            &__bars {
+                background-color: transparent;
+                display: block;
+                position: relative;
+                width: 45px;
+                height: 4px;
+                transition: .3s;
+
+                &:before, &:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    transition: .3s;
+                    background-color: white;
+                }
+
+                &:before {
+                    transform: rotate(45deg);
+                    background: black;
+                }
+
+                &:after {
+                    transform: rotate(-45deg);
+                    background: black;
+                }
+            }
+        }
     }
 
     &-info {
