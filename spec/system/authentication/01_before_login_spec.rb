@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'ユーザログイン前のテスト' do
   let(:user) { create(:user) }
   let(:event) { create(:event) }
+  let(:event_join) { create(:event_join) }
 
   describe 'トップ画面のテスト' do
     before do
