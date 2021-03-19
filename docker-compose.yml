@@ -10,7 +10,7 @@ services:
       - .:/app
       - /var/tmp
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: test
     ports:
       - 10000:3000
     depends_on:
