@@ -97,8 +97,8 @@ jobs:
             heroku container:push web -a $HEROKU_APP_NAME
             heroku container:release web -a $HEROKU_APP_NAME
       - run:
-         name: db  migration
-         command: |
+          name: db  migration
+          command: |
             heroku run rails db:migrate --app ${HEROKU_APP_NAME}
 
 
