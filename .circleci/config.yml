@@ -93,7 +93,6 @@ jobs:
       # slack notify
       - slack/notify:
           event: fail
-          mentions: '@EngineeringTeam'
           template: basic_fail_1
       - slack/notify:
           event: pass
@@ -125,7 +124,6 @@ jobs:
       # slack notify
       - slack/notify:
           event: fail
-          mentions: '@EngineeringTeam'
           template: basic_fail_1
       - slack/notify:
           event: pass
