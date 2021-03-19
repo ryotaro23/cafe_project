@@ -44,12 +44,6 @@ describe 'ユーザログイン前のテスト' do
 
     context '表示内容の確認' do
 
-      it 'イベント詳細がクリックできる' do
-        expect(page).to have_content("Events")
-        find_all(".event-link")[0].click
-        expect(page).to have_content '参加人数'
-      end
-
       it 'ログインボタンからログイン処理ができるか確かめる' do
         find(:xpath, '//a[contains(@class, "event-top__btn login")]').click
         fill_in 'user[email]', with: user.email
