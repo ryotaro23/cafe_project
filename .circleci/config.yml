@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   heroku: circleci/heroku@1.2.5
+  slack: circleci/slack@4.1
 
 jobs:
   test_backend:
@@ -52,6 +53,17 @@ jobs:
       - run:
           command: bundle exec rails db:migrate
           working_directory: ~/repo
+      - run:
+          command: bundle exec rails db:seed
+          working_directory: ~/repo
+
+      - run:
+          name: yarn Install
+          command: yarn install
+
+      - run:
+          command: bundle exec bin/webpack
+          working_directory: ~/repo
 
       - run:
           name: create directory to store test results
@@ -78,6 +90,14 @@ jobs:
       - store_artifacts:
           path: /home/circleci/repo/tmp/screenshots
 
+      # slack notify
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
+
   deploy:
     executor: heroku/default
     steps:
@@ -97,9 +117,18 @@ jobs:
             heroku container:push web -a $HEROKU_APP_NAME
             heroku container:release web -a $HEROKU_APP_NAME
       - run:
-         name: db  migration
-         command: |
+          name: db  migration
+          command: |
             heroku run rails db:migrate --app ${HEROKU_APP_NAME}
+
+      # slack notify
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
+
 
 
 workflows:
