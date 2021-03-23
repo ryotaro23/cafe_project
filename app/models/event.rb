@@ -12,5 +12,13 @@ class Event < ApplicationRecord
         event_joins.where(user_id: user.id).exists?
     end
 
+    # event hold within 1 week or finish?
+    def hold_day?
+        if self.date-7 < Date.today && self.date > Date.today
+            return "week_in"
+        elsif self.date < Date.today
+            return "finished"
+        end
+    end
 
 end
