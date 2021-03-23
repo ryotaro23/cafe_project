@@ -31,15 +31,7 @@
         <%= t("title.event") %>
     </h3>
 
-    <div class="js-events">
-        <% @events.each do |event| %>
-            <div class="slider">
-                <%= link_to event_path(event.id), class: "event-link" do %>
-                    <%= image_tag event.image %>
-                <% end %>
-            </div>
-        <% end %>
-    </div>
+    <%= render 'events/shared/slider' %>
     <h3 class="event-info__title text-center title-text">
         <%= t("title.what_is") %>
     </h3>
