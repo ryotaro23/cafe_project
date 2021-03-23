@@ -5,7 +5,9 @@ document.addEventListener("turbolinks:load", function () {
     let $eventBefore = $("#js-event-before");
     let $eventAfter = $("#js-event-after");
 
+
     $selectBefore.css("color", "#FF5252");
+    $eventAfter.css("display", "none");
 
     $selectBefore.click(function () {
         $selectBefore.css("color", "#FF5252");

@@ -7,6 +7,7 @@ ja:
     finished: 開催済み
     before: 開催予定
     after: 開催済み
+    join_num: " × %{join_num}/%{max_num} "
   title:
     welcome: Welcome to Cafe Modern!
     event: Events
