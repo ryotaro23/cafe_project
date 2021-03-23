@@ -3,16 +3,20 @@ class EventsController < InheritedResources::Base
   include PutTime
 
   def top
-    @events = Event.order(created_at: :desc).limit(5)
+    @events = Event.order(date: :asc).limit(5)
   end
 
   def greeting
   end
 
   def index
-    @events = Event.order(created_at: :desc).limit(5)
-    @event = @events[0].created_at
-    @month, @day = print_day(@event)
+    @events = Event.order(date: :asc).limit(30)
+    today = time_part[:today]
+    week = time_part[:week]
+
+    # future > past
+    @events_after = @events.where("date < ?", today)
+    @events_before = @events.where("date >= ?", today)
   end
 
   private

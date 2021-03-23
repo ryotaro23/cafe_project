@@ -1,12 +1,19 @@
 ja:
   index:
-    name: 名前
+    holding: "%{date} %{time}で開催予定"
+    recommend_event: 直近のイベント
+    recommend_menu: "%{menu}がおすすめのお店"
+    week_in: 1週間以内のイベント！！
+    finished: 開催済み
+    before: 開催予定
+    after: 開催済み
   title:
     welcome: Welcome to Cafe Modern!
     event: Events
     what_is: What is Cafe Modern
     q_and_a: Q&A
     greeting: 代表者挨拶
+    index: イベント一覧
   user:
     registration: 新規登録
     login: ログイン
