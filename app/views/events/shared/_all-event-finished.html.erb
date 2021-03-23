@@ -4,7 +4,7 @@
             <%= image_tag event.image %>
             <div class="event-all__menu__item__content">
                 <p class="event-all__menu__item__date">
-                    <%= t("index.holding", date: event.date, time: event.time_table.time) %>
+                    <%= t("index.holding", date: event.date.strftime('%m月%d日'), time: event.time_table.time) %>
 
                     <!-- event  hold within a week? -->
                     <% if event.hold_day? == "week_in" %>
