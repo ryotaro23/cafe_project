@@ -1,0 +1,27 @@
+ja:
+
+  # 時間型の変更
+  # 呼び出し　　<%= l {time}, format: :{formatsのいずれかの動作} %>
+  time:
+    formats:
+      default: "%H時%M分"
+      ja_date: "%Y年%m月%d日"
+      ja_date_except_year: "%m月%d日"
+      full_time: "%Y年%m月%d日 %H時%M分"
+      full_time_except_year: "%m月%d日%H時%M分"
+      long: "%Y/%m/%d %H:%M"
+      plain_time: "%H:%M"
+      plain_date: "%Y/%m/%d"
+      plain_full: "%Y/%m/%d %H:%M"
+
+  # 日付型の変更
+  # 呼び出し　　<%= l {date}, format: :{formatsのいずれかの動作} %>
+  date:
+    day_names: [日, 月, 火, 水, 木, 金, 土]
+    formats:
+      full_date: "%Y年%-m月%-d日"
+      full_date_except_year: "%-m月%-d日"
+      only_year_month: "%Y年%m月"
+      plain_year_month: "%Y/%m"
+      only_year_month_without_zero_before_month: "%Y年%-m月"
+      full_date_with_day: "%Y年%-m月%-d日（%A）"
