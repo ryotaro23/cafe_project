@@ -1,15 +1,19 @@
 ActiveAdmin.register Event do
-  permit_params :name, :time_id, :recommend_menu, :place, :max_num, :image
+  permit_params :name, :date, :time_id, :recommend_menu, :recommend_menu_price, :place, :max_num, :comment, :store_url, :image
 
   form do |f|
     f.semantic_errors # shows errors on :base
     f.inputs do
       f.input :name
+      f.input :date
       f.input :time_id
       f.input :recommend_menu
+      f.input :recommend_menu_price
       f.input :place
       f.input :max_num
       f.input :image, as: :file
+      f.input :comment
+      f.input :store_url
       f.actions
     end
   end
@@ -17,10 +21,14 @@ ActiveAdmin.register Event do
   show do
     attributes_table do
       row :name
+      row :date
       row :time_id
       row :recommend_menu
+      row :recommend_menu_price
       row :place
       row :max_num
+      row :comment
+      row :store_url
       row :image do |ad|
         image_tag url_for(ad.image)
       end
