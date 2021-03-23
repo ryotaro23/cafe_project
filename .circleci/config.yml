@@ -147,5 +147,3 @@ workflows:
               branches:
                   only:
                   - master
-
-rails g migration AddCommentToEvents comment:text
