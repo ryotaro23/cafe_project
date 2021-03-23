@@ -60,6 +60,10 @@
                     background-color: $text-dark;
                 }
 
+                &__join {
+                    margin-top: 20px;
+                }
+
             img {
                 @include square-image(300px);
                 margin-right: 20px;
