@@ -8,6 +8,7 @@ describe 'ユーザログイン後のテスト' do
     let(:event_3out) { create(:event, date: Date.today+5, max_num: 10) }
     let(:event_out) { create(:event, date: Date.today-3, max_num: 10) }
     let(:event_max_1) { create(:event, max_num: 1) }
+    let(:time_table) { create(:time_table) }
 
     before do
         # 開始3日以内, 開始3日以前, 終了済みの3パターンで分類
