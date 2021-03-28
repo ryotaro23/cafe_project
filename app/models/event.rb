@@ -21,4 +21,12 @@ class Event < ApplicationRecord
         end
     end
 
+    def cancel_able?
+        if self.date-3 >  Date.today
+            return "day_in"
+        elsif self.date-3 <=  Date.today && self.date >= Date.today
+            return "day_out"
+        end
+    end
+
 end
