@@ -8,6 +8,27 @@ ja:
     before: 開催予定
     after: 開催済み
     join_num: " × %{join_num}/%{max_num} "
+  show:
+    joinable: ⭐ 参加可能
+    joinunable: ✖ 参加不可
+    comment: 運営からのコメント
+    cancel:
+      able: 参加取り消し
+      unable: キャンセル不可
+      note-html: |
+            ※既にキャンセル期間が過ぎているイベントです。<br>
+            運営に連絡することでキャンセル費がかからない場合があるのでsample@gmail.comまで連絡ください。
+    holded: 終了済み
+    hold: 参加する
+    before-login: ログインして参加する
+    category:
+      name: 店名
+      date: 日時
+      recommend: おすすめ
+      store_url: URL
+    date: "%{date} %{time}"
+    recommend: "%{recommend_menu} (%{recommend_price}円)"
+
   title:
     welcome: Welcome to Cafe Modern!
     event: Events

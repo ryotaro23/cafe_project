@@ -1,9 +1,8 @@
 .header{
-    background-color: transparent;
+    background-color: $base-color;
     display: flex;
     justify-content: space-between;
     height: 100px;
-    position: fixed;
     z-index: 200;
     width: 100%;
 
