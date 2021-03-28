@@ -1,7 +1,9 @@
 <div class="js-events">
-    <% @events.each do |event| %>
+    <% @events.order(date: :desc).limit(3).each do |event| %>
         <div class="slider">
-            <%= image_tag event.image %>
+            <%= link_to event_path(event.id), class: "event-link" do %>
+                <%= image_tag event.image %>
+            <% end %>
         </div>
     <% end %>
 </div>

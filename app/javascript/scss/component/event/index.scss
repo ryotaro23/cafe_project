@@ -1,0 +1,78 @@
+.event-all {
+
+    &__container {
+        width: 90%;
+    }
+
+    &__recommend {
+        font-weight: bold;
+        padding: 90px 0 30px;
+        border-bottom: 1px solid #efefef;
+        margin-bottom: 20px;
+    }
+
+    &__select {
+        &-before,
+        &-after{
+            cursor: pointer;
+        }
+    }
+
+    &__menu {
+        width: 90%;
+        background-color: $background-color;
+        padding: 40px 0;
+
+        &__item {
+                margin-top: 15px;
+                border-top: 1px solid #efefef;
+                border-bottom: 1px solid #efefef;
+                padding: 10px;
+                transition: all 0.3s ease;
+                display: flex;
+                width: 90%;
+
+                &:hover {
+                    box-shadow: 0 0.5rem 1rem gray;
+                }
+
+                &__title {
+                    font-size: 1.4em;
+                    color: $twitter-color;
+                }
+
+                &:hover &__title {
+                    color: $base-color;
+                    text-decoration: underline;
+                }
+
+                &__content {
+                    padding: 20px 0;
+                }
+
+                &__week {
+                    color: white;
+                    background-color: $base-color;
+                }
+
+                &__finished {
+                    color: white;
+                    background-color: $text-dark;
+                }
+
+                &__join {
+                    margin-top: 20px;
+                }
+
+            img {
+                @include square-image(300px);
+                margin-right: 20px;
+            }
+
+            &-nothing {
+                margin: 20px 0;
+            }
+
+        }
+    }
+}
