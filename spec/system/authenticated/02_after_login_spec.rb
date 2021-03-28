@@ -3,12 +3,12 @@ require 'rails_helper'
 describe 'ユーザログイン後のテスト' do
 
     let(:user) { create(:user) }
-    let(:event) { create(:event) }
-    let(:event_3in) { create(:event, date: Date.today+1, max_num: 10) }
-    let(:event_3out) { create(:event, date: Date.today+5, max_num: 10) }
-    let(:event_out) { create(:event, date: Date.today-3, max_num: 10) }
-    let(:event_max_1) { create(:event, max_num: 1) }
     let(:time_table) { create(:time_table) }
+    let(:event) { create(:event, time_id: time_table.id) }
+    let(:event_3in) { create(:event, time_id: time_table.id, date: Date.today+1, max_num: 10) }
+    let(:event_3out) { create(:event, time_id: time_table.id, date: Date.today+5, max_num: 10) }
+    let(:event_out) { create(:event, time_id: time_table.id, date: Date.today-3, max_num: 10) }
+    let(:event_max_1) { create(:event, time_id: time_table.id, max_num: 1) }
 
     before do
         # 開始3日以内, 開始3日以前, 終了済みの3パターンで分類
@@ -53,7 +53,7 @@ describe 'ユーザログイン後のテスト' do
     describe 'イベント一覧画面のテスト' do
 
         before do
-            create(:event, name: "sample1")
+            create(:event, time_id: time_table.id, name: "sample1")
             visit events_path
         end
 
@@ -77,9 +77,9 @@ describe 'ユーザログイン後のテスト' do
     describe '1週間以内のイベント' do
 
         before do
-            create(:event, name: "sample2",date: Date.today+1 )         #0: 一週間以内
-            create(:event, name: "sample3",date: Date.today+10 )        #1: 一週間以上後
-            create(:event, name: "sample4",date: Date.today-1 )         #2: 経過後
+            create(:event, time_id: time_table.id, name: "sample2",date: Date.today+1 )         #0: 一週間以内
+            create(:event, time_id: time_table.id, name: "sample3",date: Date.today+10 )        #1: 一週間以上後
+            create(:event, time_id: time_table.id, name: "sample4",date: Date.today-1 )         #2: 経過後
             visit events_path
         end
 
