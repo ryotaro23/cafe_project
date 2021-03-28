@@ -11,12 +11,12 @@ class EventsController < InheritedResources::Base
 
   def index
     @events = Event.order(date: :asc).limit(30)
-    today = time_part[:today]
-    week = time_part[:week]
+    @today = time_part[:today]
+    @week = time_part[:week]
 
     # future > past
-    @events_after = @events.where("date < ?", today)
-    @events_before = @events.where("date >= ?", today)
+    @events_after = @events.where("date < ?", @today)
+    @events_before = @events.where("date >= ?", @today)
   end
 
   private
