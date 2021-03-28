@@ -41,12 +41,12 @@
                             <%= t("mypage.event.nothing") %>
                         </p>
                     <% else %>
-                        <% @event_joins.each do |event| %>
-                            <%= link_to event_path(event.event.id) do %>
+                        <% @event_joins.each do |event_join| %>
+                            <%= link_to event_path(event_join.event.id) do %>
                                 <div class="mypage-info__event">
-                                    <%= image_tag event.event.image %>
+                                    <%= image_tag event_join.event.image %>
                                     <span>
-                                        <%= event.event.name %>
+                                        <%= event_join.event.name %>
                                     </span>
                                 </div>
                             <% end %>
