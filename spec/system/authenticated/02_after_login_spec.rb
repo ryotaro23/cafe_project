@@ -103,8 +103,7 @@ describe 'ユーザログイン後のテスト' do
     #             expect(more7Day).to have_no_content "開催済み"
     #         end
     #     end
-
-    end
+    # end
 
     describe '3日以内のイベントのテスト' do
         before do

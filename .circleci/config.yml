@@ -139,14 +139,19 @@ workflows:
           filters:
             branches:
               ignore: master
+
   deploy_heroku:
     jobs:
-      - deploy:
-          # masterブランチへのpushでのみ反応
+      - test_backend:
           filters:
               branches:
                   only:
                   - staging
+      - deploy:
+          # masterブランチへのpushでのみ反応
+          requires:
+            - test_backend
+
   # deploy_aws:
   #   jobs:
   #     - deploy:
