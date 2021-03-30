@@ -121,6 +121,11 @@ jobs:
           command: |
             heroku run rails db:migrate --app ${HEROKU_APP_NAME}
 
+      - run:
+          name: db  seed
+          command: |
+            heroku run rails db:seed --app ${HEROKU_APP_NAME}
+
       # slack notify
       - slack/notify:
           event: fail
