@@ -138,7 +138,9 @@ workflows:
       - test_backend:
           filters:
             branches:
-              ignore: master
+              ignore:
+                - master
+                - staging
 
   deploy_heroku:
     jobs:
