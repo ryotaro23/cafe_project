@@ -28,7 +28,7 @@ COPY . /app
 # COPY entrypoint.sh /usr/bin/
 # RUN chmod +x /usr/bin/entrypoint.sh
 # ENTRYPOINT ["entrypoint.sh"
-
+RUN bundle exec rails webpacker:install
 RUN bin/webpack
 # この記述を追加
 CMD bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
