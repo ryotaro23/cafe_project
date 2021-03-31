@@ -1,6 +1,10 @@
 FROM ruby:2.6.5
 
 
+# 以下の記述を追加
+ENV RAILS_ENV=test
+
+
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && \
     apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
@@ -23,10 +27,8 @@ COPY . /app
 
 # COPY entrypoint.sh /usr/bin/
 # RUN chmod +x /usr/bin/entrypoint.sh
-# ENTRYPOINT ["entrypoint.sh"]
+# ENTRYPOINT ["entrypoint.sh"
 
-# 以下の記述を追加
-ENV RAILS_ENV=test
-
+RUN bin/webpack
 # この記述を追加
 CMD bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
