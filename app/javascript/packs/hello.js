@@ -1,4 +1,3 @@
-console.log('hello world');
 
 $('#toggle').click(function () {
     $(this).toggleClass('active');

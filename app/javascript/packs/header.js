@@ -1,4 +1,3 @@
-console.log('hello tinko');
 
 document.addEventListener("turbolinks:load", function () {
     $("#js-ham").click(function () {
