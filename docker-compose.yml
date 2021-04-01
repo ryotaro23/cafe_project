@@ -5,14 +5,17 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     container_name: rails-cafe
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app
-      - /var/tmp
+      - tmp-data:/app/tmp
+      - sockets:/app/tmp/sockets
+      - public-data:/app/public
     environment:
       RAILS_ENV: development
+      # RAILS_ENV: production
     ports:
-      - 10000:3000
+      - 3000:3000
     depends_on:
       - db
       - chrome
@@ -64,10 +67,30 @@ services:
     networks:
       - cafe
 
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - '80:80'
+      #socketファイルの共有
+    volumes:
+      - sockets:/app/tmp/sockets
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+    depends_on:
+      - web
+    networks:
+      - cafe
+
 networks:
   cafe:
 
 volumes:
   pg-data:
   pgadmin-data:
+  sockets:
+  public-data:
+  tmp-data:
+  log-data:
 

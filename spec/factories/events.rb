@@ -4,7 +4,7 @@ FactoryBot.define do
     date { Faker::Date.between(from: '2019-09-23', to: '2022-09-25') }
     time_id {1}
     recommend_menu { Faker::Lorem.characters(number: 10) }
-    recommend_menu { Faker::Number.number(digits: 4) }
+    recommend_menu_price { Faker::Number.number(digits: 4) }
     place { Faker::Lorem.characters(number: 10) }
     max_num { Faker::Number.within(range: 3..9) }
     comment { Faker::Lorem.characters }

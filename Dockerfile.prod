@@ -2,7 +2,7 @@ FROM ruby:2.6.5
 
 
 # 以下の記述を追加
-ENV RAILS_ENV=test
+ENV RAILS_ENV=production
 
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && \
@@ -33,7 +33,7 @@ RUN yarn add jquery popper.js bootstrap
 
 # webpack:installをするとwebpackの設定ファイルが初期化されてjqueryなどが使えなくなってしまう
 # RUN rails webpacker:install
-RUN NODE_ENV=test ./bin/webpack
+RUN NODE_ENV=production ./bin/webpack
 
 # COPY entrypoint.sh /usr/bin/
 # RUN chmod +x /usr/bin/entrypoint.sh
