@@ -25,11 +25,13 @@ COPY Gemfile.lock /app/Gemfile.lock
 COPY yarn.lock /app
 COPY package.json /app
 RUN bundle install
+# ここでyarn installをしないとwebpackerを実行できない
 RUN yarn install
 COPY . /app
 
 RUN yarn add jquery popper.js bootstrap
 
+# webpack:installをするとwebpackの設定ファイルが初期化されてjqueryなどが使えなくなってしまう
 # RUN rails webpacker:install
 RUN NODE_ENV=test ./bin/webpack
 
