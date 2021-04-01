@@ -28,7 +28,7 @@ RUN bundle install
 RUN yarn install
 COPY . /app
 
-RUN yarn install jquery popper.js bootstrap
+RUN yarn add jquery popper.js bootstrap
 
 # RUN rails webpacker:install
 RUN NODE_ENV=test ./bin/webpack
