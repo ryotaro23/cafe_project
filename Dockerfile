@@ -22,8 +22,16 @@ WORKDIR /app
 RUN mkdir -p tmp/sockets
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
+COPY yarn.lock /app
+COPY package.json /app
 RUN bundle install
+RUN yarn install
 COPY . /app
+
+# RUN yarn install jquery popper.js bootstrap
+
+RUN rails webpacker:install
+RUN bin/webpack
 
 # COPY entrypoint.sh /usr/bin/
 # RUN chmod +x /usr/bin/entrypoint.sh
