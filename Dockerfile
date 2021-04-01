@@ -28,10 +28,10 @@ RUN bundle install
 RUN yarn install
 COPY . /app
 
-# RUN yarn install jquery popper.js bootstrap
+RUN yarn install jquery popper.js bootstrap
 
-RUN rails webpacker:install
-RUN bin/webpack
+# RUN rails webpacker:install
+RUN NODE_ENV=test ./bin/webpack
 
 # COPY entrypoint.sh /usr/bin/
 # RUN chmod +x /usr/bin/entrypoint.sh

@@ -12,6 +12,7 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+require('jquery')
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // BootstrapのJavaScript側の機能を読み込む
