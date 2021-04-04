@@ -15,6 +15,7 @@ RUN yarn add node-sass
 
 WORKDIR /app
 RUN mkdir -p tmp/sockets
+RUN mkdir -p tmp/pids
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install

@@ -22,3 +22,8 @@ heroku run rails db:migrate
 heroku run rake assets:precompile RAILS_ENV=production
 
 heroku open
+
+
+# Error R14 (Memory quota exceeded)
+# heroku config:set WEB_CONCURRENCY=1
+# heroku restart
