@@ -54,7 +54,6 @@ networks:
   cafe-production:
 
 volumes:
-  pg-data:
   sockets:
   public-data:
   tmp-data:
