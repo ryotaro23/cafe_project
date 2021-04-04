@@ -90,10 +90,17 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: app_production
+#   username: <%= ENV['DB_USERNAME'] || 'postgres' %>
+#   host: <%= ENV['DB_HOST'] || 'db' %>
+#   password: <%= ENV['DB_PASSWORD'] || '12345678' %>
+#   url: <%= ENV['DATABASE_URL'] %>
 production:
   <<: *default
-  database: app_production
-  username: <%= ENV['DB_USERNAME'] || 'postgres' %>
-  host: <%= ENV['DB_HOST'] || 'db' %>
-  password: <%= ENV['DB_PASSWORD'] || '12345678' %>
-  url: <%= ENV['DATABASE_URL'] %>
+  # ***** 以下を修正 *****
+  database: cafe_production
+  username: postgres
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
