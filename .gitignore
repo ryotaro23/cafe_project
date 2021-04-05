@@ -52,3 +52,4 @@ config/environments/*.local.yml
 terraform.tfstate
 
 ssh.sh
+pass.yml
