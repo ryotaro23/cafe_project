@@ -26,6 +26,7 @@ ja:
       date: 日時
       recommend: おすすめ
       store_url: URL
+      adress: 住所
     date: "%{date} %{time}"
     recommend: "%{recommend_menu} (%{recommend_price}円)"
 
