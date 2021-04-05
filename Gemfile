@@ -42,6 +42,9 @@ gem 'config'
 # 画像保存用
 gem "aws-sdk-s3", require: false #追記
 
+# 環境変数
+gem 'dotenv-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
