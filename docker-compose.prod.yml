@@ -9,6 +9,7 @@ services:
     volumes:
       - .:/app
       - /var/tmp
+      # nginxとつなげるためのvolume
       - sockets:/app/tmp/sockets
       - public-data:/app/public
       - tmp-data:/app/tmp
@@ -44,7 +45,7 @@ services:
       dockerfile: ./nginx/Dockerfile
     ports:
       - '80:80'
-      #socketファイルの共有
+      # webとnginxの療法と共有する必要がある。
     volumes:
       - sockets:/app/tmp/sockets
       - public-data:/app/public
