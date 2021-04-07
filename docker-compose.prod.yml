@@ -19,23 +19,8 @@ services:
       RAILS_SERVE_STATIC_FILES: 1
     ports:
       - 3000:3000
-    depends_on:
-      - db
     tty: true
     stdin_open: true
-    networks:
-      - cafe-production
-  db:
-    image: postgres:9.6.2-alpine
-    container_name: db-cafe
-    environment:
-      POSTGRES_PASSWORD: 12345678
-      TZ: "Asia/Tokyo"
-    volumes:
-      - pg-data:/var/lib/postgresql/data
-    restart: always
-    ports:
-      - 5432:5432
     networks:
       - cafe-production
   nginx:
