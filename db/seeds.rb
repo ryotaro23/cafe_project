@@ -10,7 +10,11 @@
 #AdminUser.create!(email: 'admin_ookado@unti.com', password: '285wylyp1n3yvv40bnlf', password_confirmation: '285wylyp1n3yvv40bnlf') if Rails.env.test?
 
 
+<<<<<<< HEAD
 TimeTable.create!(time: '18:00~20:00') if Rails.env.test?
+=======
+# TimeTable.create!(time: '18:00~20:00') if Rails.env.test?
+>>>>>>> 593253444aa190f974b7d8feb01da09ef0b8d816
 TimeTable.create!(time: '11:00~13:00')
 TimeTable.create!(time: '11:00~13:00')
 TimeTable.create!(time: '12:00~14:00')
