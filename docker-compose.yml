@@ -83,6 +83,13 @@ services:
     networks:
       - cafe
 
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    ports:
+      - "8025:8025"
+    networks:
+        - cafe
+
 networks:
   cafe:
 
