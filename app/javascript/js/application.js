@@ -1,5 +1,6 @@
 // import
 import './import/slick.min'
+import './import/google-map'
 
 //setting
 import './component/slick_set'
