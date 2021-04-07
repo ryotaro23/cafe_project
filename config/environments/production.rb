@@ -113,7 +113,7 @@ Rails.application.configure do
   # timestamps for the last write to the primary. The resolver uses the context
   # class timestamps to determine how long to wait before reading from the
   # replica.
-  #
+  config.action_mailer.default_url_options = {  host: 'http://cafe-modern.com/' }
   # By default Rails will store a last write timestamp in the session. The
   # DatabaseSelector middleware is designed as such you can define your own
   # strategy for connection switching and pass that into the middleware through
@@ -121,4 +121,16 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  # Gmail送信設定
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               ENV["MAIL_DOMAIN"],
+    user_name:            ENV["MAIL"],
+    password:             ENV["MAIL_PASS"],
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
 end

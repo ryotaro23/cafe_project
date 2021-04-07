@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 RUN yarn add node-sass
 
 WORKDIR /app
+RUN mkdir -p tmp/pids
 RUN mkdir -p tmp/sockets
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
@@ -29,11 +30,11 @@ RUN bundle install
 RUN yarn install
 COPY . /app
 
-RUN yarn add jquery popper.js bootstrap
+# RUN yarn add jquery popper.js bootstrap
 
 # webpack:installをするとwebpackの設定ファイルが初期化されてjqueryなどが使えなくなってしまう
 # RUN rails webpacker:install
-RUN NODE_ENV=production ./bin/webpack
+# RUN NODE_ENV=production ./bin/webpack
 
 # COPY entrypoint.sh /usr/bin/
 # RUN chmod +x /usr/bin/entrypoint.sh

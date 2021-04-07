@@ -42,6 +42,9 @@ gem 'config'
 # 画像保存用
 gem "aws-sdk-s3", require: false #追記
 
+# 環境変数
+gem 'dotenv-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -65,6 +68,9 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # メールが送られてくる設定
+  gem "letter_opener"
 end
 
 group :test do

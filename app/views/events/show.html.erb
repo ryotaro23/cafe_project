@@ -9,7 +9,7 @@
 
   <div class="event-detail__info">
     <div class="event-detail__info__container m-auto">
-      <h3 class="event-detail__info__name">
+      <h3 class="event-detail__info__name" id="js-store-name">
         <%= @event.name %>
       </h3>
 
@@ -26,7 +26,9 @@
           </span>
         <% end %>
         <i class="fas fa-map-marker-alt"></i>
-        <%= @event.place %>
+        <span id="js-place">
+          <%= @event.place %>
+        </span>
       </div>
 
       <!-- ログインしてるか -->
@@ -126,8 +128,22 @@
             <%= link_to "店舗URL", @event.store_url, class: "detail-url"%>
           </td>
         </tr>
+        <tr class="event-detail__info__table__index">
+          <th class="event-detail__info__table__col">
+            <i class="fas fa-map-marked-alt"></i>
+            <%= t("show.category.adress") %>
+          </th>
+          <td class="event-detail__info__table__item last">
+            <span id="js-adress">
+              <%= @event.adress %>
+            </span>
+          </td>
+        </tr>
       </table>
     </div>
+  </div>
+  <div class="event-detail__map">
+    <%= render 'events/shared/google-map' %>
   </div>
 </section>
 

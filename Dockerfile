@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 RUN yarn add node-sass
 
 WORKDIR /app
+RUN mkdir -p tmp/pids
 RUN mkdir -p tmp/sockets
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
