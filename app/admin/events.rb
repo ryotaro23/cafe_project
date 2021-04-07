@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  permit_params :name, :date, :time_id, :recommend_menu, :recommend_menu_price, :place, :max_num, :comment, :store_url, :image
+  permit_params :name, :date, :time_id, :recommend_menu, :recommend_menu_price, :place,:adress, :max_num, :comment, :store_url, :image
 
   form do |f|
     f.semantic_errors # shows errors on :base
@@ -10,6 +10,7 @@ ActiveAdmin.register Event do
       f.input :recommend_menu
       f.input :recommend_menu_price
       f.input :place
+      f.input :adress
       f.input :max_num
       f.input :image, as: :file
       f.input :comment
@@ -26,6 +27,7 @@ ActiveAdmin.register Event do
       row :recommend_menu
       row :recommend_menu_price
       row :place
+      row :adress
       row :max_num
       row :comment
       row :store_url

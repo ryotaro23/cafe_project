@@ -1,12 +1,19 @@
 version: '3.5'
 services:
   web:
-    build: .
-    container_name: rails-web
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: cafe-web
+    command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app
       - /var/tmp
+      # nginxとつなげるためのvolume
+      - sockets:/app/tmp/sockets
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+      - log-data:/app/log
     environment:
       RAILS_ENV: production
       # これがないとwebpackがcompileされないので注意
@@ -18,11 +25,10 @@ services:
     tty: true
     stdin_open: true
     networks:
-      - sample
-
+      - cafe-production
   db:
     image: postgres:9.6.2-alpine
-    container_name: rails-db
+    container_name: db-cafe
     environment:
       POSTGRES_PASSWORD: 12345678
       TZ: "Asia/Tokyo"
@@ -32,11 +38,32 @@ services:
     ports:
       - 5432:5432
     networks:
-      - sample
+      - cafe-production
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - '80:80'
+      # webとnginxの療法と共有する必要がある。
+    volumes:
+      - sockets:/app/tmp/sockets
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+    depends_on:
+      - web
+    networks:
+      - cafe-production
 
 networks:
-  sample:
+  cafe-production:
 
 volumes:
   pg-data:
+  sockets:
+  public-data:
+  tmp-data:
+  log-data:
+
+
 

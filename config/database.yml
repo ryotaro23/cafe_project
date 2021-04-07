@@ -97,3 +97,10 @@ production:
   host: <%= ENV['DB_HOST'] || 'db' %>
   password: <%= ENV['DB_PASSWORD'] || '12345678' %>
   url: <%= ENV['DATABASE_URL'] %>
+# production:
+#   <<: *default
+#   # ***** 以下を修正 *****
+#   database: cafe_production
+#   username: postgres
+#   password: <%= Rails.application.credentials.db[:password] %>
+#   host: <%= Rails.application.credentials.db[:hostname] %>
